@@ -30,6 +30,6 @@ do
 done
 ```
 
-I am going to use Trinity version XXX for assembly.  I am using only reads where both pairs passed the trimming step and I am going to concatenate forward and reverse reads from all libraries for each species and do the assembly jointly for all libraries for each species. This should reduce redundancy, facilitate read mapping, and hopefully simplify things in general.
+I am going to use Trinity version 2.1.1 for assembly.  I am using only reads where both pairs passed the trimming step and I am going to concatenate forward and reverse reads from all libraries for each species and do the assembly jointly for all libraries for each species. This should reduce redundancy, facilitate read mapping, and hopefully simplify things in general.
 
 
