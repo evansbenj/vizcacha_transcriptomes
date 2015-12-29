@@ -43,3 +43,9 @@ and for the reverse (R2) reads:
 ```
 cat Heart/AO248_Heart_R2_trim_paired.fastq Kidney/AO248_Kidney_R2_trim_paired.fastq Liver/AO248_Liver_R2_trim_paired.fastq Lung/AO248_Lung_R2_trim_paired.fastq Muscle/AO248_Muscle_R2_trim_paired.fastq Ovary/AO248_Ovary_R2_trim_paired.fastq > AO248_all_R2_trim_paired.fastq
 ```
+
+And now the trinity assembly using version 2.1.1:
+
+```
+/home/ben/trinityrnaseq-2.1.1/Trinity --seqType fq --left AO248_all_R1_trim_paired.fastq.gz --right AO248_all_R2_trim_paired.fastq.gz --CPU 6 --max_memory 20G
+```
