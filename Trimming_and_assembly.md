@@ -49,3 +49,8 @@ And now the trinity assembly using version 2.1.1:
 ```
 /home/ben/trinityrnaseq-2.1.1/Trinity --seqType fq --left AO248_all_R1_trim_paired.fastq.gz --right AO248_all_R2_trim_paired.fastq.gz --CPU 6 --max_memory 20G
 ```
+and for the concatenated tympa transcriptomes:
+
+```
+/home/ben/trinityrnaseq-2.1.1/Trinity --seqType fq --left tympa_all_R1_trim_paired.fastq.gz --right tympa_all_R2_trim_paired.fastq.gz --CPU 6 --max_memory 20G
+```
