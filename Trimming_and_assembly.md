@@ -60,11 +60,15 @@ Update in July, 2016.  I am working with the Octomys and Tympanoctomys trinity a
 '/home/ben/2014_Tympanoctomys_transcriptomes/Octomys/Octomys_joint_trinity_assembly_with_concatenated_reads/trinity_out_dir/Octomys_all_transcriptomes_assembled_together.fasta'
 
 These have 280,712 and 308,854 assembled sequences for T. barrarae and O. mimax, respectively.  Then I used cd-hit to reduce redundancy as follows:
-'/home/ben/cd-hit-v4.6.1-2012-08-27/cd-hit -i Tympa_all_transcriptomes_assembled_together.fasta -o Tympa_all_transcriptomes_assembled_together_unique.fasta -c 1.00 -n 5 -M 2000'
-
+```
+/home/ben/cd-hit-v4.6.1-2012-08-27/cd-hit -i Tympa_all_transcriptomes_assembled_together.fasta -o Tympa_all_transcriptomes_assembled_together_unique.fasta -c 1.00 -n 5 -M 2000
+```
 and 
 
-'/home/ben/cd-hit-v4.6.1-2012-08-27/cd-hit -i Octomys_all_transcriptomes_assembled_together.fasta -o Octomys_all_transcriptomes_assembled_together_unique.fasta -c 1.00 -n 5 -M 2000'
+```
+/home/ben/cd-hit-v4.6.1-2012-08-27/cd-hit -i Octomys_all_transcriptomes_assembled_together.fasta -o Octomys_all_transcriptomes_assembled_together_unique.fasta -c 1.00 -n 5 -M 2000
+```
+
 
 
 
