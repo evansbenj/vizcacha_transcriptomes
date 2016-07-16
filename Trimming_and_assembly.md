@@ -103,6 +103,6 @@ SINEs: 6151
 Unclear:  16333
 ```
 
-Some directories were made for each analysis but neither output file was generated; not sure why.
+Some directories were made for each analysis with weird names but neither output matched the file of the input line. I figured out which was which by comparing the '.stat' file to the output from each analysis.
 
 
