@@ -84,6 +84,25 @@ and
 ```
 /home/evanslab/Hymeno_fastqc/RepArk_analysis/TEclass-2.1.3/TEclassTest.pl -r ./Tympa/contigs.fa -o ./Tympa/TE_count_and_categories.out
 ```
+Results
+```
+tympa
+Repeat statistics:
+DNA transposons: 13041
+LTRs:  19229
+LINEs: 13333
+SINEs: 5874
+Unclear:  16624
 
+Octomys
+Repeat statistics:
+DNA transposons: 11885
+LTRs:  18229
+LINEs: 13734
+SINEs: 6151
+Unclear:  16333
+```
+
+Some directories were made for each analysis but neither output file was generated; not sure why.
 
 
