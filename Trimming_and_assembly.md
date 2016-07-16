@@ -69,6 +69,18 @@ and
 /home/ben/cd-hit-v4.6.1-2012-08-27/cd-hit -i Octomys_all_transcriptomes_assembled_together.fasta -o Octomys_all_transcriptomes_assembled_together_unique.fasta -c 1.00 -n 5 -M 2000
 ```
 
+While this was running, I used RepARC.pl to use a kmar approach to identify and assemble transposible elements from the raw (trimmed) sequences. This did not work initially so I tried it again with a threshold of 70 as follows:
+```
+./RepARK.pl -l AO248_all_R1_trim_paired.fastq.gz -l AO248_all_R2_trim_paired.fastq.gz -t 70
+```
+```
+./RepARK.pl -l tympa_all_R1_trim_paired.fastq.gz -l tympa_all_R2_trim_paired.fastq.gz -t 70
+```
+This worked and made a file in a folder called 'velvet_repeat_lib' which was called 'contigs.fa' which had the repeat sequences that were constructed from the kmers.  Then this can be fed into TEclass as follows:
+```
+/home/ben/2014_Tympanoctomys_transcriptomes/RepArk_analysis/TEclass-2.1.3/TEclassTest.pl -r contigs.fa -o TE_count_and_categories.out
+```
+
 
 
 
