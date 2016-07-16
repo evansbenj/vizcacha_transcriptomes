@@ -105,4 +105,10 @@ Unclear:  16333
 
 Some directories were made for each analysis with weird names but neither output matched the file of the input line. I figured out which was which by comparing the '.stat' file to the output from each analysis.
 
+Update: these results are bogus.  The manual suggests that this should not be done with whole genome sequences becaise everything will be assinged to a category.  Better to just feed the unique seqs into RepeatMasker, which can be done like this:
+
+```
+/usr/local/RepeatMasker/RepeatMasker -species rodentia -noisy OUTPUTFILE
+```
+
 
