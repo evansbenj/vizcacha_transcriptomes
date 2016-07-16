@@ -76,11 +76,14 @@ While this was running, I used RepARC.pl to use a kmar approach to identify and 
 ```
 ./RepARK.pl -l tympa_all_R1_trim_paired.fastq.gz -l tympa_all_R2_trim_paired.fastq.gz -t 70
 ```
-This worked and made a file in a folder called 'velvet_repeat_lib' which was called 'contigs.fa' which had the repeat sequences that were constructed from the kmers.  Then this can be fed into TEclass as follows:
+This worked and made a file in a folder called 'velvet_repeat_lib' which was called 'contigs.fa' which had the repeat sequences that were constructed from the kmers.  Then this can be fed into TEclass.  I had to log into evanslab and copy the contig.fa files there because I got a perl error associated with a missing module on my account.  I was unable to use cpan to install it because of privelidges. Anyhow, here is how it was run on evanslab from within the TEclass-2.1.3 directory:
 ```
-/home/ben/2014_Tympanoctomys_transcriptomes/RepArk_analysis/TEclass-2.1.3/TEclassTest.pl -r contigs.fa -o TE_count_and_categories.out
+/home/evanslab/Hymeno_fastqc/RepArk_analysis/TEclass-2.1.3/TEclassTest.pl -r ./Octomys/contigs.fa -o ./Octomys/TE_count_and_categories.out
 ```
-
+and
+```
+/home/evanslab/Hymeno_fastqc/RepArk_analysis/TEclass-2.1.3/TEclassTest.pl -r ./Tympa/contigs.fa -o ./Tympa/TE_count_and_categories.out
+```
 
 
 
