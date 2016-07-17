@@ -127,3 +127,10 @@ Update: these results are bogus.  The manual suggests that this should not be do
 the `-q` flag does a quick search.  If this takes too long, do `-qq` instead.
 
 
+I had an idea to use cd-hit to progressively simplify the transcriptome assembly to see if we can get a precipitous drop in read number because paralogs are combined below a certain similarity threshold.  To demonstrate this effect, I downloaded XL and ST unigene dbs and am trying cdhit on them.  First I'll do it at 100% and then I'll feed this into cdhit again at 99, 95, 90 and 80.
+
+```
+/home/ben/cd-hit-v4.6.1-2012-08-27/cd-hit -i Xl.seq.uniq -o Xl.seq.uniq_cdhit100.fasta -c 1.00 -n 5 -M 2000
+/home/ben/cd-hit-v4.6.1-2012-08-27/cd-hit -i Str.seq.uniq -o Str.seq.uniq_cdhit100.fasta -c 1.00 -n 5 -M 2000
+```
+
