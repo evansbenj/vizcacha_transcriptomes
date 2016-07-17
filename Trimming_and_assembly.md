@@ -108,7 +108,7 @@ Some directories were made for each analysis with weird names but neither output
 Update: these results are bogus.  The manual suggests that this should not be done with whole genome sequences becaise everything will be assinged to a category.  Better to just feed the unique seqs into RepeatMasker, which can be done like this:
 
 ```
-/usr/local/RepeatMasker/RepeatMasker -q -species rodentia -noisy OUTPUTFILE
+/usr/local/RepeatMasker/RepeatMasker -q -species rodentia -noisy OUTPUTFILE Octomys_all_transcriptomes_assembled_together_unique.fastar
 ```
 
 the `-q` flag does a quick search.  If this takes too long, do `-qq` instead.
