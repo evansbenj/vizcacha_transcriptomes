@@ -69,6 +69,17 @@ and
 /home/ben/cd-hit-v4.6.1-2012-08-27/cd-hit -i Octomys_all_transcriptomes_assembled_together.fasta -o Octomys_all_transcriptomes_assembled_together_unique.fasta -c 1.00 -n 5 -M 2000
 ```
 
+Then I also made some more simple files by changing the -c flag to lower values:
+
+```
+/home/ben/cd-hit-v4.6.1-2012-08-27/cd-hit -i Tympa_all_transcriptomes_assembled_together_unique.fasta -o Tympa_all_transcriptomes_assembled_together_99.fasta -c 0.99 -n 5 -M 2000
+```
+and 
+
+```
+/home/ben/cd-hit-v4.6.1-2012-08-27/cd-hit -i Octomys_all_transcriptomes_assembled_together_unique.fasta -o Octomys_all_transcriptomes_assembled_together_99.fasta -c 0.99 -n 5 -M 2000
+```
+
 While this was running, I used RepARC.pl to use a kmar approach to identify and assemble transposible elements from the raw (trimmed) sequences. This did not work initially so I tried it again with a threshold of 70 as follows:
 ```
 ./RepARK.pl -l AO248_all_R1_trim_paired.fastq.gz -l AO248_all_R2_trim_paired.fastq.gz -t 70
