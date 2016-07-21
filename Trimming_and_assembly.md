@@ -82,6 +82,16 @@ Choose'of'word'size:
 
 Meanwhile, I also need to do this for the ST and XL unigene dbs:
 
+```
+/usr/local/cdhit/cd-hit-v4.6.1-2012-08-27/cd-hit-est -i Str.seq.uniq -o Str.seq.uniq_cdhitest100.fasta -c 1.00 -n 10 -M 2000 -T 8
+/usr/local/cdhit/cd-hit-v4.6.1-2012-08-27/cd-hit-est -i Str.seq.uniq_cdhitest100.fasta -o Str.seq.uniq_cdhitest80.fasta -c 0.80 -n 5 -M 2000 -T 8
+```
+and
+```
+/usr/local/cdhit/cd-hit-v4.6.1-2012-08-27/cd-hit-est -i Xl.seq.uniq -o Xl.seq.uniq_cdhitest100.fasta -c 1.00 -n 10 -M 2000 -T 8
+/usr/local/cdhit/cd-hit-v4.6.1-2012-08-27/cd-hit-est -i Xl.seq.uniq_cdhitest100.fasta -o Xl.seq.uniq_cdhitest80.fasta -c 0.80 -n 5 -M 2000 -T 8
+```
+
 
 ```
 /home/ben/cd-hit-v4.6.1-2012-08-27/cd-hit -i Tympa_all_transcriptomes_assembled_together_unique.fasta -o Tympa_all_transcriptomes_assembled_together_99.fasta -c 0.99 -n 5 -M 2000
