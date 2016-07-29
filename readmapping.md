@@ -56,7 +56,7 @@ java -jar ~/picard-tools-1.131/picard.jar AddOrReplaceReadGroups \
       I=/home/ben/2014_Tympanoctomys_transcriptomes/Octomys/Octomys_joint_trinity_assembly_with_concatenated_reads/octomys_aln_sorted.bam \
       O=/home/ben/2014_Tympanoctomys_transcriptomes/Octomys/Octomys_joint_trinity_assembly_with_concatenated_reads/octomys_aln_sorted_rg.bam \
       RGID=4 \
-      RGLB=tympa_combined \
+      RGLB=oct_combined \
       RGPL=illumina \
       RGPU=unit1 \
       RGSM=oct_combined      
