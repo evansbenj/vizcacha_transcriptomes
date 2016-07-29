@@ -34,13 +34,7 @@ sort the bam files
 
 /usr/local/bin/samtools sort /home/ben/2014_Tympanoctomys_transcriptomes/Octomys/Octomys_joint_trinity_assembly_with_concatenated_reads/octomys_aln.bam /home/ben/2014_Tympanoctomys_transcriptomes/Octomys/Octomys_joint_trinity_assembly_with_concatenated_reads/octomys_aln_sorted
 ```
-make a bai file
 
-```
-/usr/local/bin/samtools index /home/ben/2014_Tympanoctomys_transcriptomes/Tympano/Tympano_joint_trinity_assembly_with_concatenated_reads/tympa_aln_sorted.bam
-
-/usr/local/bin/samtools index /home/ben/2014_Tympanoctomys_transcriptomes/Octomys/Octomys_joint_trinity_assembly_with_concatenated_reads/octomys_aln_sorted.bam
-```
 add a readgroup with picard
 ```
 java -jar ~/picard-tools-1.131/picard.jar AddOrReplaceReadGroups \
@@ -62,6 +56,14 @@ java -jar ~/picard-tools-1.131/picard.jar AddOrReplaceReadGroups \
       RGSM=oct_combined      
       
       
+```
+
+make a bai file
+
+```
+/usr/local/bin/samtools index /home/ben/2014_Tympanoctomys_transcriptomes/Tympano/Tympano_joint_trinity_assembly_with_concatenated_reads/tympa_aln_sorted_rg.bam
+
+/usr/local/bin/samtools index /home/ben/2014_Tympanoctomys_transcriptomes/Octomys/Octomys_joint_trinity_assembly_with_concatenated_reads/octomys_aln_sorted_rg.bam
 ```
 
 
