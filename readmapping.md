@@ -38,8 +38,33 @@ make a bai file
 
 ```
 /usr/local/bin/samtools index /home/ben/2014_Tympanoctomys_transcriptomes/Tympano/Tympano_joint_trinity_assembly_with_concatenated_reads/tympa_aln_sorted.bam
+
 /usr/local/bin/samtools index /home/ben/2014_Tympanoctomys_transcriptomes/Octomys/Octomys_joint_trinity_assembly_with_concatenated_reads/octomys_aln_sorted.bam
 ```
+add a readgroup with picard
+```
+java -jar ~/picard-tools-1.131/picard.jar AddOrReplaceReadGroups \
+      I=/home/ben/2014_Tympanoctomys_transcriptomes/Tympano/Tympano_joint_trinity_assembly_with_concatenated_reads/tympa_aln_sorted.bam \
+      O=/home/ben/2014_Tympanoctomys_transcriptomes/Tympano/Tympano_joint_trinity_assembly_with_concatenated_reads/tympa_aln_sorted_rg.bam \
+      RGID=4 \
+      RGLB=tympa_combined \
+      RGPL=illumina \
+      RGPU=unit1 \
+      RGSM=tympa_combined
+      
+java -jar ~/picard-tools-1.131/picard.jar AddOrReplaceReadGroups \
+      I=/home/ben/2014_Tympanoctomys_transcriptomes/Octomys/Octomys_joint_trinity_assembly_with_concatenated_reads/octomys_aln_sorted.bam \
+      O=/home/ben/2014_Tympanoctomys_transcriptomes/Octomys/Octomys_joint_trinity_assembly_with_concatenated_reads/octomys_aln_sorted_rg.bam \
+      RGID=4 \
+      RGLB=tympa_combined \
+      RGPL=illumina \
+      RGPU=unit1 \
+      RGSM=oct_combined      
+      
+      
+```
+
+
 Use unified genotyper to call bases
 
 ```
