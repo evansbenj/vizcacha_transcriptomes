@@ -75,3 +75,15 @@ java -Xmx4G -jar /usr/local/gatk/GenomeAnalysisTK.jar -T UnifiedGenotyper -R /ho
 
 java -Xmx4G -jar /usr/local/gatk/GenomeAnalysisTK.jar -T UnifiedGenotyper -R /home/ben/2014_Tympanoctomys_transcriptomes/Octomys/Octomys_joint_trinity_assembly_with_concatenated_reads/trinity_out_dir/Octomys_all_transcriptomes_assembled_together_unique.fasta -I /home/ben/2014_Tympanoctomys_transcriptomes/Octomys/Octomys_joint_trinity_assembly_with_concatenated_reads/octomys_aln_sorted_rg.bam -out_mode EMIT_ALL_CONFIDENT_SITES -o /home/ben/2014_Tympanoctomys_transcriptomes/Octomys/Octomys_joint_trinity_assembly_with_concatenated_reads/octomys_allconfident.vcf
 ```
+Make tab delimited files
+```
+~/tabix-0.2.6/bgzip tympa_allconfident.vcf
+~/tabix-0.2.6/tabix -p vcf tympa_allconfident.vcf.gz
+zcat tympa_allconfident.vcf.gz | /usr/local/vcftools/src/perl/vcf-to-tab > tympa_allconfident.vcf.gz.tab
+```
+and
+```
+~/tabix-0.2.6/bgzip octomys_allconfident.vcf
+~/tabix-0.2.6/tabix -p vcf octomys_allconfident.vcf.gz
+zcat octomys_allconfident.vcf.gz | /usr/local/vcftools/src/perl/vcf-to-tab > octomys_allconfident.vcf.gz.tab
+```
