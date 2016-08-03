@@ -149,8 +149,8 @@ This ended up not working, so I have abandoned the cd-hit-est approach
 The kmer approach using RepArk.pl used a default kmer size of 31 bases.  One possibility is that this size is too small to effectively distinguish a 'peak' of abundance of kmers.  So I am going to try a larger kmer size as follows:
 
 ```
-./RepARK.pl -l AO248_all_R1_trim_paired.fastq.gz -l AO248_all_R2_trim_paired.fastq.gz -k 70 -o  repArc_kmer_70
+./RepARK.pl -l AO248_all_R1_trim_paired.fastq.gz -l AO248_all_R2_trim_paired.fastq.gz -k 70 -o repArc_kmer_70
 ```
 ```
-./RepARK.pl -l tympa_all_R1_trim_paired.fastq.gz -l tympa_all_R2_trim_paired.fastq.gz -k 70 -o  repArc_kmer_70
+./RepARK.pl -l tympa_all_R1_trim_paired.fastq.gz -l tympa_all_R2_trim_paired.fastq.gz -k 70 -o repArc_kmer_70
 ```
