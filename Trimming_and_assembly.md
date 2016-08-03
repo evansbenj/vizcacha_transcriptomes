@@ -92,24 +92,14 @@ and
 /usr/local/cdhit/cd-hit-v4.6.1-2012-08-27/cd-hit-est -i Xl.seq.uniq_cdhitest100.fasta -o Xl.seq.uniq_cdhitest80.fasta -c 0.80 -n 5 -M 2000 -T 8
 ```
 
-
-```
-/home/ben/cd-hit-v4.6.1-2012-08-27/cd-hit -i Tympa_all_transcriptomes_assembled_together_unique.fasta -o Tympa_all_transcriptomes_assembled_together_99.fasta -c 0.99 -n 5 -M 2000
-```
-and 
-
-```
-/home/ben/cd-hit-v4.6.1-2012-08-27/cd-hit -i Octomys_all_transcriptomes_assembled_together_unique.fasta -o Octomys_all_transcriptomes_assembled_together_99.fasta -c 0.99 -n 5 -M 2000
-```
-
-While this was running, I used RepARC.pl to use a kmar approach to identify and assemble transposible elements from the raw (trimmed) sequences. This did not work initially so I tried it again with a threshold of 70 as follows:
+I used RepARC.pl to use a kmer approach to identify and assemble transposible elements from the raw (trimmed) sequences. This did not work initially so I tried it again with a threshold of 70 as follows:
 ```
 ./RepARK.pl -l AO248_all_R1_trim_paired.fastq.gz -l AO248_all_R2_trim_paired.fastq.gz -t 70
 ```
 ```
 ./RepARK.pl -l tympa_all_R1_trim_paired.fastq.gz -l tympa_all_R2_trim_paired.fastq.gz -t 70
 ```
-This worked and made a file in a folder called 'velvet_repeat_lib' which was called 'contigs.fa' which had the repeat sequences that were constructed from the kmers.  Then this can be fed into TEclass.  I had to log into evanslab and copy the contig.fa files there because I got a perl error associated with a missing module on my account.  I was unable to use cpan to install it because of privelidges. Anyhow, here is how it was run on evanslab from within the TEclass-2.1.3 directory:
+This worked and made a file in a folder called 'velvet_repeat_lib' which was called 'contigs.fa' which had the repeat sequences that were constructed from the kmers.  Then this can be fed into TEclass.  I had to log into evanslab and copy the contig.fa files there because I got a perl error associated with a missing module on my account.  I was unable to use cpan to install it because of priviledges. Anyhow, here is how it was run on evanslab from within the TEclass-2.1.3 directory:
 ```
 /home/evanslab/Hymeno_fastqc/RepArk_analysis/TEclass-2.1.3/TEclassTest.pl -r ./Octomys/contigs.fa -o ./Octomys/TE_count_and_categories.out
 ```
@@ -142,7 +132,6 @@ Update: these results are bogus.  The manual suggests that this should not be do
 
 ```
 /usr/local/RepeatMasker/RepeatMasker -q -species rodentia -noisy Octomys_all_transcriptomes_assembled_together_unique.fastar
-
 /usr/local/RepeatMasker/RepeatMasker -q -species rodentia -noisy Tympa_all_transcriptomes_assembled_together_unique.fasta
 ```
 
@@ -155,4 +144,13 @@ I had an idea to use cd-hit to progressively simplify the transcriptome assembly
 /home/ben/cd-hit-v4.6.1-2012-08-27/cd-hit -i Xl.seq.uniq -o Xl.seq.uniq_cdhit100.fasta -c 1.00 -n 5 -M 2000
 /home/ben/cd-hit-v4.6.1-2012-08-27/cd-hit -i Str.seq.uniq -o Str.seq.uniq_cdhit100.fasta -c 1.00 -n 5 -M 2000
 ```
+This ended up not working, so I have abandoned the cd-hit-est approach
 
+The kmer approach using RepArk.pl used a default kmer size of 31 bases.  One possibility is that this size is too small to effectively distinguish a 'peak' of abundance of kmers.  So I am going to try a larger kmer size as follows:
+
+```
+./RepARK.pl -l AO248_all_R1_trim_paired.fastq.gz -l AO248_all_R2_trim_paired.fastq.gz -k 70 -o  repArc_kmer_70
+```
+```
+./RepARK.pl -l tympa_all_R1_trim_paired.fastq.gz -l tympa_all_R2_trim_paired.fastq.gz -k 70 -o  repArc_kmer_70
+```
