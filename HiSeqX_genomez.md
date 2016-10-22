@@ -38,5 +38,68 @@ java -jar /home/ben/Trimmomatic-0.36/trimmomatic-0.36.jar PE -phred33 -trimlog A
 ```
 
 # FastQC Again
-This hopefully now will find no overrepresented adaptor seqs
+This hopefully now will find no overrepresented adaptor seqs, which is accurate
+
+# Kmer
+The kmer approach using RepArk.pl used a default kmer size of 31 bases. I am going to try a larger kmer size as follows:
+
+```
+./RepARK.pl -l AO245_R1_trim_paired.fastq.gz -l AO245_R2_trim_paired.fastq.gz -k 70 -o AO245_kmer_70
+./RepARK.pl -l AO248_R1_trim_paired.fastq.gz -l AO248_R2_trim_paired.fastq.gz -k 70 -o AO248_kmer_70
+```
+
+The kmer densities can be plotted using this R script:
+
+
+```
+library(ggplot2)
+
+# make a pdf
+pdf("kmer_density plot.pdf",w=6, h=2, version="1.4", bg="transparent")
+
+# load the data
+tymp<-read.table("jf_RepARK.tymp_histo")
+tymp$species <- 'tymp'
+oct<-read.table("jf_RepARK.octomys_histo")
+oct$species <- 'oct'
+
+# combine the data
+data <- rbind(tymp, oct)
+
+# make a density plot (data$V2 has the counts of each kmer)
+ggplot(data, aes(V2, fill = species)) +
+  # make it transparent and add a limit to the X and Y axes for clarity
+  geom_density(alpha = 0.2) + xlim(0,5000) + ylim(0,0.002) +
+  # modify the labels
+  xlab("Occurance") + ylab("Density") +
+  # modify the title
+  ggtitle(expression(paste("Densities of 31-mers for ",italic("T. barrerae")," and ",italic("O. mimax")," transcriptomes"))) +
+  # get rid of the background
+  theme_classic() +
+  # fix the legend
+  scale_fill_manual(values=c("red", "blue"),
+                    name="Species",
+                    labels=c(expression(paste(italic("O. mimax"))), expression(paste(italic("T. barrerae")))))+
+  # get the legend to be left justified
+  theme(legend.text.align   =0) +
+  # move the legend over
+  theme(legend.position = c(.8, .5))+
+  # make the title smaller
+  theme(plot.title = element_text(size = 10)) +
+  # make legend title smaller too
+  theme(legend.title = element_text(size = 8)) +
+  # make legend text smaller too
+  theme(legend.text = element_text(size = 8)) +
+  # make x axis smaller too
+  theme(axis.title.x = element_text(size = 8)) +
+  # make y axis smaller too
+  theme(axis.title.y = element_text(size = 8)) +
+  # make axis text smaller too
+  theme(axis.text = element_text(size = 8)) +
+  geom_segment(aes(x = 500, y = 0.0005, xend = 3000, yend = 0.0005))
+
+dev.off()
+# DONE!
+```
+
 
