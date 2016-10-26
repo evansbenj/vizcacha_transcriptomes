@@ -102,4 +102,9 @@ dev.off()
 # DONE!
 ```
 
+# parsing the velvet assembly
 
+To out put the coverage of the top ten contigs assembled by velvet after the Repark.pl analysis, I typed this:
+```
+grep -o -P '(?<=cov_).*(?=)' contigs.fa | sort -rn | head -n 10
+```
