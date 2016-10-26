@@ -102,7 +102,8 @@ dev.off()
 # DONE!
 ```
 
-# parsing the velvet assembly
+# Parsing the velvet assembly
+I'm in this directory: `/net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO245_kmer_51/velvet_repeat_lib`
 
 To out put the coverage of the top ten contigs assembled by velvet after the Repark.pl analysis, I typed this:
 ```
