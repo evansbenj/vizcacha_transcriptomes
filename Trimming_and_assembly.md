@@ -206,3 +206,11 @@ ggplot(data, aes(V2, fill = species)) +
 dev.off()
 # DONE!
 ```
+
+I used this one liner to output the highest coverage contig in the velvet_repeat_lib directory:
+
+```
+grep -o -P '(?<=cov_).*(?=)' contigs.fa | sort -rn | head -n 1
+```
+
+
