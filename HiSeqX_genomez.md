@@ -109,3 +109,48 @@ To out put the coverage of the top ten contigs assembled by velvet after the Rep
 ```
 grep -o -P '(?<=cov_).*(?=)' contigs.fa | sort -rn | head -n 10
 ```
+
+# Genome size stuff with jellyfish
+
+# genome size estimation (http://koke.asrc.kanazawa-u.ac.jp/HOWTO/kmer-genomesize.html)
+# for tympa (in R)
+data245 = read.table("jf_RepARK.tymp_histo", header=FALSE)
+plot(data245[5:200,],type="h", main="tymp_31mer")
+# sum the counts above the error threshold (here it is inaccurate because of low coverage; we are only skipping the first one)
+sum(as.numeric(as.numeric(data245[2:10000,1])*as.numeric(data245[2:10000,2])))
+# find out where the peak is (it is ~12):
+data245[15:20,]
+# genome size is sum of counts (66,664,660,599) divided by peak count class (12)
+sum(as.numeric(as.numeric(data245[2:10000,1])*as.numeric(data245[2:10000,2])))/12
+# genome size: 5,555,388,383 (not bad)
+# size of single copy region
+sum(as.numeric(as.numeric(data245[2:50,1])*as.numeric(data245[2:50,2])))/12
+# 3166762086
+# 3166762086/5555388383
+# 0.5700343 of the genome is single copy
+
+
+# for octomys
+data248 = read.table("jf_RepARK.octomys_histo", header=FALSE)
+plot(data248[5:200,],type="h", main="oct_31mer")
+sum(as.numeric(as.numeric(data248[2:9995,1])*as.numeric(data248[2:9995,2])))/11
+#Genome size: 3,283,950,778 (should be ~4gb I think; also not too bad)
+
+sum(as.numeric(as.numeric(data248[2:45,1])*as.numeric(data248[2:45,2])))/11
+
+(sum(as.numeric(as.numeric(data248[2:45,1])*as.numeric(data248[2:45,2])))/11)/(sum(as.numeric(as.numeric(data248[2:9995,1])*as.numeric(data248[2:9995,2])))/11)
+
+#0.8665599 of the genome is single copy
+
+# now make a plot with poisson expectaton
+singleC <- sum(as.numeric(as.numeric(data248[2:45,1])*as.numeric(data248[2:45,2])))/11
+pdf("octo_jellyfishkmer_hist_withpoisson.pdf",w=6, h=5, version="1.4", bg="transparent")
+plot(1:200,dpois(1:200, 11)*singleC, type = "l", col=3, lty=2)
+lines(data248[2:200,],type="l")
+dev.off()
+
+pdf("tympa_jellyfishkmer_hist_withpoisson.pdf",w=6, h=5, version="1.4", bg="transparent")
+plot(1:200,dpois(1:200, 12)*singleC, type = "l", col=3, lty=2)
+lines(data245[2:200,],type="l")
+dev.off()
+
