@@ -114,33 +114,39 @@ grep -o -P '(?<=cov_).*(?=)' contigs.fa | sort -rn | head -n 10
 
 ### genome size estimation (http://koke.asrc.kanazawa-u.ac.jp/HOWTO/kmer-genomesize.html)
 ### for tympa (in R)
+```
 data245 = read.table("jf_RepARK.tymp_histo", header=FALSE)
 plot(data245[5:200,],type="h", main="tymp_31mer")
+```
 ### sum the counts above the error threshold (here it is inaccurate because of low coverage; we are only skipping the first one)
 sum(as.numeric(as.numeric(data245[2:10000,1])*as.numeric(data245[2:10000,2])))
 ### find out where the peak is (it is ~12):
 data245[15:20,]
 ### genome size is sum of counts (66,664,660,599) divided by peak count class (12)
 sum(as.numeric(as.numeric(data245[2:10000,1])*as.numeric(data245[2:10000,2])))/12
-### genome size: 5,555,388,383 (not bad)
+### genome size: 5,555,388,383 (not bad for the 31mer) for the 70mer, the estimated genome size is 9,693,531,420 using a peak value of 5
+### and a kmer sum of 48,467,657,099
+
 ### size of single copy region
 sum(as.numeric(as.numeric(data245[2:50,1])*as.numeric(data245[2:50,2])))/12
 ### 3166762086
 ### 3166762086/5555388383
-### 0.5700343 of the genome is single copy
+### 0.5700343 of the genome is single copy (for 70mer, ~0.68 is single copy using 2:25 as the range for single copy)
 
 
 ### for octomys
+```R
 data248 = read.table("jf_RepARK.octomys_histo", header=FALSE)
 plot(data248[5:200,],type="h", main="oct_31mer")
 sum(as.numeric(as.numeric(data248[2:9995,1])*as.numeric(data248[2:9995,2])))/11
-#Genome size: 3,283,950,778 (should be ~4gb I think; also not too bad)
+```
+#Genome size: 3,283,950,778 (should be ~4gb I think; also not too bad) for 70mer it is 3,417,128,968 (quite similar)
 
 sum(as.numeric(as.numeric(data248[2:45,1])*as.numeric(data248[2:45,2])))/11
 
 (sum(as.numeric(as.numeric(data248[2:45,1])*as.numeric(data248[2:45,2])))/11)/(sum(as.numeric(as.numeric(data248[2:9995,1])*as.numeric(data248[2:9995,2])))/11)
 
-#0.8665599 of the genome is single copy
+#0.8665599 of the genome is single copy or for 70mer 0.9233744 of the genome is single copy
 
 ### now make a plot with poisson expectaton
 singleC <- sum(as.numeric(as.numeric(data248[2:45,1])*as.numeric(data248[2:45,2])))/11
