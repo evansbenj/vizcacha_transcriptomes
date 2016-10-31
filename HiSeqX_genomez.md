@@ -124,14 +124,14 @@ sum(as.numeric(as.numeric(data245[2:10000,1])*as.numeric(data245[2:10000,2])))
 data245[15:20,]
 ### genome size is sum of counts (66,664,660,599) divided by peak count class (12)
 sum(as.numeric(as.numeric(data245[2:10000,1])*as.numeric(data245[2:10000,2])))/12
-### genome size: 5,555,388,383 (not bad for the 31mer) for the 70mer, the estimated genome size is 9,693,531,420 using a peak value of 5
+### genome size: 5,555,388,383 (not bad for the 31mer) for the 70mer, the estimated genome size is 8,077,942,850 using a peak value of 6
 ### and a kmer sum of 48,467,657,099
 
 ### size of single copy region
 sum(as.numeric(as.numeric(data245[2:50,1])*as.numeric(data245[2:50,2])))/12
 ### 3166762086
 ### 3166762086/5555388383
-### 0.5700343 of the genome is single copy (for 70mer, ~0.68 is single copy using 2:25 as the range for single copy)
+### 0.5700343 of the genome is single copy (for 70mer, ~0.60 is single copy using 2:25 as the range for single copy)
 
 
 ### for octomys
