@@ -149,14 +149,16 @@ sum(as.numeric(as.numeric(data248[2:45,1])*as.numeric(data248[2:45,2])))/11
 #0.8665599 of the genome is single copy or for 70mer 0.9233744 of the genome is single copy
 
 ### now make a plot with poisson expectaton
+```R
 singleC <- sum(as.numeric(as.numeric(data248[2:45,1])*as.numeric(data248[2:45,2])))/11
 pdf("octo_jellyfishkmer_hist_withpoisson.pdf",w=6, h=5, version="1.4", bg="transparent")
 plot(1:200,dpois(1:200, 11)*singleC, type = "l", col=3, lty=2)
 lines(data248[2:200,],type="l")
 dev.off()
-
+```
+```R
 pdf("tympa_jellyfishkmer_hist_withpoisson.pdf",w=6, h=5, version="1.4", bg="transparent")
 plot(1:200,dpois(1:200, 12)*singleC, type = "l", col=3, lty=2)
 lines(data245[2:200,],type="l")
 dev.off()
-
+```
