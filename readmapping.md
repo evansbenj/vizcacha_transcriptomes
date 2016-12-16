@@ -79,6 +79,17 @@ make a bai file
 
 /usr/local/bin/samtools index /home/ben/2014_Tympanoctomys_transcriptomes/Octomys/Octomys_joint_trinity_assembly_with_concatenated_reads/octomys_aln_sorted_rg.bam
 ```
+Mark duplicates
+
+```
+java -jar ~/picard-tools-1.131/picard.jar MarkDuplicates INPUT=/home/ben/2014_Tympanoctomys_transcriptomes/Tympano/Tympano_joint_trinity_assembly_with_concatenated_reads/tympa_aln_sorted_rg.bam OUTPUT=/home/ben/2014_Tympanoctomys_transcriptomes/Tympano/Tympano_joint_trinity_assembly_with_concatenated_reads/tympa_aln_sorted_rg_dedup_reads.bam METRICS_FILE=/home/ben/2014_Tympanoctomys_transcriptomes/Tympano/Tympano_joint_trinity_assembly_with_concatenated_reads/tympa_aln_sorted_rg_dedup_metrics.txt
+
+java -jar ~/picard-tools-1.131/picard.jar MarkDuplicates INPUT=/home/ben/2014_Tympanoctomys_transcriptomes/Octomys/Octomys_joint_trinity_assembly_with_concatenated_reads/octomys_aln_sorted_rg.bam OUTPUT=/home/ben/2014_Tympanoctomys_transcriptomes/Octomys/Octomys_joint_trinity_assembly_with_concatenated_reads/octomys_aln_sorted_rg_dedup.bam METRICS_FILE=/home/ben/2014_Tympanoctomys_transcriptomes/Octomys/Octomys_joint_trinity_assembly_with_concatenated_reads/octomys_aln_sorted_rg_dedup_metrics.txt
+
+```
+
+Indel realignment
+
 
 
 Use unified genotyper to call bases
