@@ -79,18 +79,17 @@ make a bai file
 
 /usr/local/bin/samtools index /home/ben/2014_Tympanoctomys_transcriptomes/Octomys/Octomys_joint_trinity_assembly_with_concatenated_reads/octomys_aln_sorted_rg.bam
 ```
+
+Moving to this directory: `/net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/`
 Mark duplicates
 
 ```
-java  -Xmx1G -jar ~/picard-tools-1.131/picard.jar MarkDuplicates INPUT=/home/ben/2014_Tympanoctomys_transcriptomes/Tympano/Tympano_joint_trinity_assembly_with_concatenated_reads/tympa_aln_sorted_rg.bam OUTPUT=/home/ben/2014_Tympanoctomys_transcriptomes/Tympano/Tympano_joint_trinity_assembly_with_concatenated_reads/tympa_aln_sorted_rg_dedup_reads.bam METRICS_FILE=/home/ben/2014_Tympanoctomys_transcriptomes/Tympano/Tympano_joint_trinity_assembly_with_concatenated_reads/tympa_aln_sorted_rg_dedup_metrics.txt
+java -Xmx1G -jar ~/picard-tools-1.131/picard.jar MarkDuplicates INPUT=/home/ben/2014_Tympanoctomys_transcriptomes/Tympano/Tympano_joint_trinity_assembly_with_concatenated_reads/tympa_aln_sorted_rg.bam OUTPUT=/net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/tympa_aln_sorted_rg_dedup_reads.bam METRICS_FILE=/net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/tympa_aln_sorted_rg_dedup_metrics.txt
 
-java  -Xmx1G -jar ~/picard-tools-1.131/picard.jar MarkDuplicates INPUT=/home/ben/2014_Tympanoctomys_transcriptomes/Octomys/Octomys_joint_trinity_assembly_with_concatenated_reads/octomys_aln_sorted_rg.bam OUTPUT=/home/ben/2014_Tympanoctomys_transcriptomes/Octomys/Octomys_joint_trinity_assembly_with_concatenated_reads/octomys_aln_sorted_rg_dedup.bam METRICS_FILE=/home/ben/2014_Tympanoctomys_transcriptomes/Octomys/Octomys_joint_trinity_assembly_with_concatenated_reads/octomys_aln_sorted_rg_dedup_metrics.txt
+
+java -Xmx1G -jar ~/picard-tools-1.131/picard.jar MarkDuplicates INPUT=/home/ben/2014_Tympanoctomys_transcriptomes/Octomys/Octomys_joint_trinity_assembly_with_concatenated_reads/octomys_aln_sorted_rg.bam OUTPUT=/net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/octomys_aln_sorted_rg_dedup.bam METRICS_FILE=/net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/octomys_aln_sorted_rg_dedup_metrics.txt
 
 ```
-
-Indel realignment
-
-
 
 Use unified genotyper to call bases
 
@@ -100,6 +99,7 @@ java -Xmx4G -jar /usr/local/gatk/GenomeAnalysisTK.jar -T UnifiedGenotyper -R /ho
 
 java -Xmx4G -jar /usr/local/gatk/GenomeAnalysisTK.jar -T UnifiedGenotyper -R /home/ben/2014_Tympanoctomys_transcriptomes/Octomys/Octomys_joint_trinity_assembly_with_concatenated_reads/trinity_out_dir/Octomys_all_transcriptomes_assembled_together_unique.fasta -I /home/ben/2014_Tympanoctomys_transcriptomes/Octomys/Octomys_joint_trinity_assembly_with_concatenated_reads/octomys_aln_sorted_rg.bam -out_mode EMIT_ALL_CONFIDENT_SITES -o /home/ben/2014_Tympanoctomys_transcriptomes/Octomys/Octomys_joint_trinity_assembly_with_concatenated_reads/octomys_allconfident.vcf
 ```
+Indel realignment not needed because this is now done with HaplotypeCaller
 Actually use haplotypecaller and then genotypegvcfs to call bases
 
 ```
