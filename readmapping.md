@@ -1,6 +1,6 @@
 # Mapping reads to the Trinity assembly
 
-The goal here is to map reads and call genotypes in Tympa and Octomys to see if there are more heterozygous sites in Tympa due to chimerial contigs comprised of homeologous reads.
+The goal here is to map reads and call genotypes in Tympa and Octomys to see if there are more heterozygous sites in Tympa due to chimerial contigs comprised of homeologous reads. I also want to map the tympa reads to octomys and vice versa.
 
 To prepare the genome on info (I am using the unique reads recovered from cdhit), for tympa:
 ```
