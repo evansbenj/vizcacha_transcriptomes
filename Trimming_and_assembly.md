@@ -43,31 +43,36 @@ java -jar /work/ben/Trimmomatic-0.32/trimmomatic-0.32.jar PE -phred33 -trimlog B
 
 ```
 
-
-I am going to use Trinity version 2.1.1 for assembly.  I am using only reads where both pairs passed the trimming step and I am going to concatenate forward and reverse reads from all libraries for each species and do the assembly jointly for all libraries for each species. This should reduce redundancy, facilitate read mapping, and hopefully simplify things in general.
+I am using Trinity version 2.1.1 for assembly.  I am using only reads where both pairs passed the trimming step and I am going to concatenate forward and reverse reads from all libraries for each species and do the assembly jointly for all libraries for each species. This should reduce redundancy, facilitate read mapping, and hopefully simplify things in general.
 
 On info, here is the concatenation command for the forward (R1) reads for Octomys:
 
 ```
 cat Heart/AO248_Heart_R1_trim_paired.fastq Kidney/AO248_Kidney_R1_trim_paired.fastq Liver/AO248_Liver_R1_trim_paired.fastq Lung/AO248_Lung_R1_trim_paired.fastq Muscle/AO248_Muscle_R1_trim_paired.fastq Ovary/AO248_Ovary_R1_trim_paired.fastq > AO248_all_R1_trim_paired.fastq
 ```
-
 and for the reverse (R2) reads:
-
 ```
 cat Heart/AO248_Heart_R2_trim_paired.fastq Kidney/AO248_Kidney_R2_trim_paired.fastq Liver/AO248_Liver_R2_trim_paired.fastq Lung/AO248_Lung_R2_trim_paired.fastq Muscle/AO248_Muscle_R2_trim_paired.fastq Ovary/AO248_Ovary_R2_trim_paired.fastq > AO248_all_R2_trim_paired.fastq
 ```
 
-And now the trinity assembly using version 2.1.1:
-
+And now the trinity assembly in info using version 2.1.1:
 ```
 /home/ben/trinityrnaseq-2.1.1/Trinity --seqType fq --left AO248_all_R1_trim_paired.fastq.gz --right AO248_all_R2_trim_paired.fastq.gz --CPU 6 --max_memory 20G
 ```
 and for the concatenated tympa transcriptomes:
-
 ```
 /home/ben/trinityrnaseq-2.1.1/Trinity --seqType fq --left tympa_all_R1_trim_paired.fastq.gz --right tympa_all_R2_trim_paired.fastq.gz --CPU 6 --max_memory 20G
 ```
+
+and for the XL and XT transcriptomes in iqaluk in this directory:
+```
+/work/ben/2016_XL_ST_liver_RNAseq
+```
+here are the assembly commands:
+```
+/work/ben/trinityrnaseq-2.1.1/Trinity --seqType fq --left BJE3909cDNA_R1_trim_paired.fastq.gz --right BJE3909cDNA_R2_trim_paired.fastq.gz --CPU 6 --max_memory 20G
+/work/ben/trinityrnaseq-2.1.1/Trinity --seqType fq --left BJE4168cDNA_R1_trim_paired.fastq.gz --right BJE4168cDNA_R2_trim_paired.fastq.gz --CPU 6 --max_memory 20G
+
 
 Update in July, 2016.  I am working with the Octomys and Tympanoctomys trinity assemblies again in order to provide Nate with some preliminary data for his proposal.  I have renamed the trinity.fasta files as follows: 
 '/home/ben/2014_Tympanoctomys_transcriptomes/Tympano/Tympano_joint_trinity_assembly_with_concatenated_reads/trinity_out_dir/Tympa_all_transcriptomes_assembled_together.fasta'
