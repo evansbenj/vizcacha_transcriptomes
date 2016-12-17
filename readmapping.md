@@ -183,3 +183,9 @@ and
 ~/tabix-0.2.6/tabix -p vcf octomys_allconfident.vcf.gz
 zcat octomys_allconfident.vcf.gz | /usr/local/vcftools/src/perl/vcf-to-tab > octomys_allconfident.vcf.gz.tab
 ```
+# Calculate pi
+
+OK, now calculare pi and divergence from the reference. This will be interesting!
+```
+Boot_from_tab_diverge_poly_2015.pl in.tab 1 4_5_1 in_poly_and_diverge.out
+```
