@@ -83,18 +83,16 @@ and
 /usr/local/cdhit/cd-hit-v4.6.1-2012-08-27/cd-hit-est -i Octomys_all_transcriptomes_assembled_together.fasta -o ./cdhit_est/Octomys_all_transcriptomes_assembled_together_unique.fasta -c 1.00 -n 10 -M 2000 -T 8
 ```
 
-Then I also made some more simple files by changing the -c flag to lower values; the '-n' flag also needs to be modified as suggested in the manual:
+And for XL and XT
 
 ```
-Choose'of'word'size:
--n 8,9,10 for thresholds 0.90 ~ 1.0
--n 7 for thresholds 0.88 ~ 0.9
--n 6 for thresholds 0.85 ~ 0.88
--n 5 for thresholds 0.80 ~ 0.85
--n 4 for thresholds 0.75 ~ 0.8
+/usr/local/cdhit/cd-hit-v4.6.1-2012-08-27/cd-hit-est -i Assembled_BJE4168_Laevis_Trinity.fasta -o Assembled_BJE4168_Laevis_Trinity_unique.fasta -c 1.00 -n 10 -M 2000 -T 8
+
+/usr/local/cdhit/cd-hit-v4.6.1-2012-08-27/cd-hit-est -i Assembled_BJE3909_Tropicalis_Trinity.fasta -o Assembled_BJE3909_Tropicalis_Trinity_unique.fasta -c 1.00 -n 10 -M 2000 -T 8
 ```
 
-Meanwhile, I also need to do this for the ST and XL unigene dbs:
+
+Here are some old commands for the ST and XL unigene dbs:
 
 ```
 /usr/local/cdhit/cd-hit-v4.6.1-2012-08-27/cd-hit-est -i Str.seq.uniq -o Str.seq.uniq_cdhitest100.fasta -c 1.00 -n 10 -M 2000 -T 8
