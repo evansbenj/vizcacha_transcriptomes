@@ -1,6 +1,10 @@
 # Genome assembly for Tymp and Oct using Abyss
 
-(On iqaluk), first unload this module:
+(On iqaluk) I am working in this directory:
+```
+/work/ben/2017_Tymp_Oct_HiSeqX
+```
+First unload this module:
 ```
 module unload intel mkl openmpi
 ```
@@ -13,5 +17,6 @@ export PATH=/work/ben/abyss/bin:$PATH
 ```
 Command for each species
 ```
-abyss-pe np=8 name=BJE3814 k=64 in='BJE3814_S3_L003_R1_001_trim_paired.cor.fastq.gz BJE3814_S3_L003_R2_001_trim_paired.cor.fastq.gz' 
+abyss-pe np=8 name=AO245 k=64 in='AO245_R1_trim_paired.fastq.gz AO245_R2_trim_paired.fastq.gz' 
+abyss-pe np=8 name=AO248 k=64 in='AO248_R1_trim_paired.fastq.gz AO248_R2_trim_paired.fastq.gz' 
 ```
