@@ -159,7 +159,17 @@ java -Xmx4G -jar /usr/local/gatk/GenomeAnalysisTK.jar -T HaplotypeCaller -R /hom
 java -Xmx4G -jar /usr/local/gatk/GenomeAnalysisTK.jar -T HaplotypeCaller -R /home/ben/2014_Tympanoctomys_transcriptomes/Octomys/Octomys_joint_trinity_assembly_with_concatenated_reads/trinity_out_dir/Octomys_all_transcriptomes_assembled_together_unique.fasta -I /home/ben/2014_Tympanoctomys_transcriptomes/Octomys/Octomys_joint_trinity_assembly_with_concatenated_reads/octomys_aln_sorted_rg.bam -out_mode EMIT_ALL_CONFIDENT_SITES -o /home/ben/2014_Tympanoctomys_transcriptomes/Octomys/Octomys_joint_trinity_assembly_with_concatenated_reads/octomys_allconfident.vcf
 ```
 
+Actually use samtools and bcftools to call genotypes and filter
+```
+~/samtools_2016/bin/samtools mpileup -d8000 -ugf /home/ben/2014_Tympanoctomys_transcriptomes/Octomys/Octomys_joint_trinity_assembly_with_concatenated_reads/trinity_out_dir/Octomys_all_transcriptomes_assembled_together_unique.fasta -t DP,AD octreads_mappedto_octomysassembly_sorted_rg_dedup.bam | ~/samtools_2016/bcftools-1.3.1/bcftools call -V indels --format-fields GQ -m -O z | ~/samtools_2016/bcftools-1.3.1/bcftools filter -e 'FORMAT/GT = "." || FORMAT/DP < 10 || FORMAT/GQ < 20 || FORMAT/GQ = "."' -O z -o octreads_mappedto_octomysassembly_sorted_rg_dedup.bam.vcf.gz
 
+~/samtools_2016/bin/samtools mpileup -d8000 -ugf /home/ben/2014_Tympanoctomys_transcriptomes/Tympano/Tympano_joint_trinity_assembly_with_concatenated_reads/trinity_out_dir/Tympa_all_transcriptomes_assembled_together_unique.fasta -t DP,AD tympareads_mappedto_tympaassembly_sorted_rg_dedup.bam  | ~/samtools_2016/bcftools-1.3.1/bcftools call -V indels --format-fields GQ -m -O z | ~/samtools_2016/bcftools-1.3.1/bcftools filter -e 'FORMAT/GT = "." || FORMAT/DP < 10 || FORMAT/GQ < 20 || FORMAT/GQ = "."' -O z -o tympareads_mappedto_tympaassembly_sorted_rg_dedup.bam.vcf.gz
+
+~/samtools_2016/bin/samtools mpileup -d8000 -ugf /home/ben/2014_Tympanoctomys_transcriptomes/Tympano/Tympano_joint_trinity_assembly_with_concatenated_reads/trinity_out_dir/Tympa_all_transcriptomes_assembled_together_unique.fasta -t DP,AD octreads_mappedto_tympsassembly_sorted_rg_dedup.bam  | ~/samtools_2016/bcftools-1.3.1/bcftools call -V indels --format-fields GQ -m -O z | ~/samtools_2016/bcftools-1.3.1/bcftools filter -e 'FORMAT/GT = "." || FORMAT/DP < 10 || FORMAT/GQ < 20 || FORMAT/GQ = "."' -O z -o octreads_mappedto_tympsassembly_sorted_rg_dedup.bam.vcf.gz
+
+~/samtools_2016/bin/samtools mpileup -d8000 -ugf /home/ben/2014_Tympanoctomys_transcriptomes/Octomys/Octomys_joint_trinity_assembly_with_concatenated_reads/trinity_out_dir/Octomys_all_transcriptomes_assembled_together_unique.fasta -t DP,AD tympareads_mappedto_octomysassembly_sorted_rg_dedup.bam | ~/samtools_2016/bcftools-1.3.1/bcftools call -V indels --format-fields GQ -m -O z | ~/samtools_2016/bcftools-1.3.1/bcftools filter -e 'FORMAT/GT = "." || FORMAT/DP < 10 || FORMAT/GQ < 20 || FORMAT/GQ = "."' -O z -o tympareads_mappedto_octomysassembly_sorted_rg_dedup.bam.vcf.gz
+
+```
 
 Make tab delimited files
 ```
