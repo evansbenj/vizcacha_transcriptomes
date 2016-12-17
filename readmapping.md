@@ -60,6 +60,11 @@ sort the bam files
 /usr/local/bin/samtools sort /home/ben/2014_Tympanoctomys_transcriptomes/Tympano/Tympano_joint_trinity_assembly_with_concatenated_reads/tympa_aln.bam /home/ben/2014_Tympanoctomys_transcriptomes/Tympano/Tympano_joint_trinity_assembly_with_concatenated_reads/tympa_aln_sorted
 
 /usr/local/bin/samtools sort /home/ben/2014_Tympanoctomys_transcriptomes/Octomys/Octomys_joint_trinity_assembly_with_concatenated_reads/octomys_aln.bam /home/ben/2014_Tympanoctomys_transcriptomes/Octomys/Octomys_joint_trinity_assembly_with_concatenated_reads/octomys_aln_sorted
+
+/usr/local/bin/samtools sort /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/tympareads_mappedto_octomysassembly.bam /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/tympareads_mappedto_octomysassembly_sorted
+
+/usr/local/bin/samtools sort /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/octreads_mappedto_tympsassembly.bam /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/octreads_mappedto_tympsassembly_sorted
+
 ```
 
 add a readgroup with picard
