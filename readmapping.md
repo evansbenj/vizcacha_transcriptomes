@@ -88,6 +88,25 @@ java -jar ~/picard-tools-1.131/picard.jar AddOrReplaceReadGroups \
       RGSM=oct_combined      
       
       
+java -jar ~/picard-tools-1.131/picard.jar AddOrReplaceReadGroups \
+      I=/net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/octreads_mappedto_tympsassembly_sorted.bam \
+      O=/net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/octreads_mappedto_tympsassembly_sorted_rg.bam \
+      RGID=4 \
+      RGLB=oct_to_tympassemb \
+      RGPL=illumina \
+      RGPU=unit1 \
+      RGSM=oct_to_tympassemb 
+
+java -jar ~/picard-tools-1.131/picard.jar AddOrReplaceReadGroups \
+      I=/net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/tympareads_mappedto_octomysassembly_sorted.bam \
+      O=/net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/tympareads_mappedto_octomysassembly_sorted_rg.bam \
+      RGID=4 \
+      RGLB=tymp_to_octassemb \
+      RGPL=illumina \
+      RGPU=unit1 \
+      RGSM=tymp_to_octassemb 
+
+
 ```
 
 make a bai file
