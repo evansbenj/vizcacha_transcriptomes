@@ -115,6 +115,10 @@ make a bai file
 /usr/local/bin/samtools index /home/ben/2014_Tympanoctomys_transcriptomes/Tympano/Tympano_joint_trinity_assembly_with_concatenated_reads/tympa_aln_sorted_rg.bam
 
 /usr/local/bin/samtools index /home/ben/2014_Tympanoctomys_transcriptomes/Octomys/Octomys_joint_trinity_assembly_with_concatenated_reads/octomys_aln_sorted_rg.bam
+
+/usr/local/bin/samtools index /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/tympareads_mappedto_octomysassembly_sorted_rg.bam
+
+/usr/local/bin/samtools index /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/octreads_mappedto_tympsassembly_sorted_rg.bam
 ```
 
 Moving to this directory: `/net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/`
