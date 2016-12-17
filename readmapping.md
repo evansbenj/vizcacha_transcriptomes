@@ -135,6 +135,11 @@ java -Xmx5G -jar ~/picard-tools-1.131/picard.jar MarkDuplicates MAX_FILE_HANDLES
 java -Xmx5G -jar ~/picard-tools-1.131/picard.jar MarkDuplicates MAX_FILE_HANDLES_FOR_READ_ENDS_MAP=1000 INPUT=/net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/octreads_mappedto_tympsassembly_sorted_rg.bam OUTPUT=/net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/octreads_mappedto_tympsassembly_sorted_rg_dedup.bam METRICS_FILE=/net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/octreads_mappedto_tympsassembly_aln_sorted_rg_dedup_metrics.txt
 
 ```
+change names
+```
+mv tympa_aln_sorted_rg_dedup.bam tympareads_mappedto_tympaassembly_sorted_rg_dedup.bam
+mv octomys_aln_sorted_rg_dedup.bam octreads_mappedto_octomysassembly_sorted_rg_dedup.bam
+```
 
 Use unified genotyper to call bases
 
