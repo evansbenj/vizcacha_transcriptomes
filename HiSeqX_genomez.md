@@ -61,6 +61,17 @@ CORRECT
 /usr/local/quake/bin/correct -f oct_uncorrected_data -z -k 19 -c XXX -m AO248_jelly_dump_all_19mers -p 4
 
 ```
+# Assembly wirth Abyss
+
+I made a directory on iqaluk for each genome:
+```
+/work/ben/2017_Tymp_Oct_HiSeqX/AO248_quaked_data
+```
+I renamed the paired files as recommended in the abyss manual. Here is the commandline for oct:
+```
+abyss-pe np=8 name=AO248 lib='pea' k=64 pea='AO248_R1_trim_paired.cor_1.fq.gz AO248_R2_trim_paired.cor_2.fq.gz' se='AO248_R1_trim_paired.cor_single.fastq.gz AO248_R2_trim_paired.cor_single.fastq.gz AO248_R1_trim_single.cor.fastq.gz AO248_R2_trim_single.cor.fastq.gz'
+```
+
 # Kmer
 The kmer approach using RepArk.pl used a default kmer size of 31 bases. I am going to try a larger kmer size as follows:
 
