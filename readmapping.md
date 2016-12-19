@@ -191,4 +191,13 @@ Boot_from_tab_diverge_poly_2015.pl in.tab 1 4_5_1 in_poly_and_diverge.out
 ```
 # Other mapping statistics
 
-I already generated an index for each transcriptome using the `samtools faidx sample.fa` command.  Now I can get the meann and total length by working from this:  `cut -f1-2 sample.fa.fai`
+I already generated an index for each transcriptome using the `samtools faidx sample.fa` command.  Now I can get the meann and total length like this:
+mean:
+```
+awk '{ total += $2 } END { print total/NR }' /home/ben/2014_Tympanoctomys_transcriptomes/Tympano/Tympano_joint_trinity_assembly_with_concatenated_reads/trinity_out_dir/Tympa_all_transcriptomes_assembled_together_unique.fasta.fai
+```
+total  length:
+```
+awk '{ total += $2 } END { print total }' /home/ben/2014_Tympanoctomys_transcriptomes/Tympano/Tympano_joint_trinity_assembly_with_concatenated_reads/trinity_out_dir/Tympa_all_transcriptomes_assembled_together_unique.fasta.fai
+```
+
