@@ -84,11 +84,27 @@ abyss-pe np=8 name=AO248 lib='pea' k=64 pea='AO245_R1_trim_paired.cor_1.fq.gz AO
 ```
 
 
-# Kmer
+# Kmer on postquake data
 Working in this directory on info.
 ```
 /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS
 ```
+Count with jellyfish
+```
+19mer
+zcat /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO245_WGS/*cor*gz | /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/jellyfish-2.2.6/bin/jellyfish count /dev/fd/0 -m 19 -s 1000000000 -t 16 -C -o AO245_jelly_count_afterquake_19mers -Q 5 
+25mer
+zcat /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO245_WGS/*cor*gz | /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/jellyfish-2.2.6/bin/jellyfish count /dev/fd/0 -m 25 -s 1000000000 -t 16 -C -o AO245_jelly_count_afterquake_25mers -Q 5 
+
+19mer
+zcat /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO248_WGS/*cor*gz | /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/jellyfish-2.2.6/bin/jellyfish count /dev/fd/0 -m 19 -s 1000000000 -t 16 -C -o AO248_jelly_count_afterquake_19mers -Q 5 
+25mer
+zcat /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO248_WGS/*cor*gz | /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/jellyfish-2.2.6/bin/jellyfish count /dev/fd/0 -m 25 -s 1000000000 -t 16 -C -o AO248_jelly_count_afterquake_25mers -Q 5
+```
+
+
+
+
 
 The kmer approach using RepArk.pl used a default kmer size of 31 bases. I am going to try a larger kmer size as follows:
 
