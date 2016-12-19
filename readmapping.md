@@ -189,3 +189,6 @@ OK, now calculare pi and divergence from the reference. This will be interesting
 ```
 Boot_from_tab_diverge_poly_2015.pl in.tab 1 4_5_1 in_poly_and_diverge.out
 ```
+# Other mapping statistics
+
+I already generated an index for each transcriptome using the `samtools faidx sample.fa` command.  Now I can get the meann and total length by working from this:  `cut -f1-2 sample.fa.fai`
