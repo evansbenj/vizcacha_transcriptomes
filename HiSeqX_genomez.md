@@ -81,6 +81,11 @@ abyss-pe np=8 name=AO248 lib='pea' k=64 pea='AO245_R1_trim_paired.cor_1.fq.gz AO
 
 
 # Kmer
+Working in this directory on info.
+```
+/net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS
+```
+
 The kmer approach using RepArk.pl used a default kmer size of 31 bases. I am going to try a larger kmer size as follows:
 
 ```
