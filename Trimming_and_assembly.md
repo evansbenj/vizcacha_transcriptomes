@@ -64,6 +64,18 @@ and for the concatenated tympa transcriptomes:
 /home/ben/trinityrnaseq-2.1.1/Trinity --seqType fq --left tympa_all_R1_trim_paired.fastq.gz --right tympa_all_R2_trim_paired.fastq.gz --CPU 6 --max_memory 20G
 ```
 
+and for the XL and XT transcriptomes on info in this directory:
+
+```
+/net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/Xenopus_for_comparison/
+```
+commands:
+```
+/home/ben/trinityrnaseq-2.1.1/Trinity --seqType fq --left BJE3909cDNA_R1_trim_paired.fastq.gz --right BJE3909cDNA_R2_trim_paired.fastq.gz --CPU 6 --max_memory 40G
+
+/home/ben/trinityrnaseq-2.1.1/Trinity --seqType fq --left BJE4168cDNA_R1_trim_paired.fastq.gz --right BJE4168cDNA_R2_trim_paired.fastq.gz --CPU 6 --max_memory 40G
+```
+
 and for the XL and XT transcriptomes in iqaluk in this directory:
 ```
 /work/ben/2016_XL_ST_liver_RNAseq
