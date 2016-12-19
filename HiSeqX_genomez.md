@@ -44,6 +44,10 @@ This hopefully now will find no overrepresented adaptor seqs, which is accurate
 I am working in this directory `/net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS`
 
 ```
+COUNT
+zcat /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO245_R*_trim_*.fastq.gz | jellyfish count /dev/fd/0 -m 19 -s 1000000000 -t 16 -C -o AO245_jelly_count_all_19mers
+zcat /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO248_R*_trim_*.fastq.gz | jellyfish count /dev/fd/0 -m 19 -s 1000000000 -t 16 -C -o AO248_jelly_count_all_19mers
+
 MERGE
 jellyfish merge -o AO245_jelly_count_all_19mers.jf AO245_jelly_count_all_19mers\_*
 jellyfish merge -o AO248_jelly_count_all_19mers.jf AO248_jelly_count_all_19mers\_*
