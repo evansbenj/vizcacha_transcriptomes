@@ -40,6 +40,27 @@ java -jar /home/ben/Trimmomatic-0.36/trimmomatic-0.36.jar PE -phred33 -trimlog A
 # FastQC Again
 This hopefully now will find no overrepresented adaptor seqs, which is accurate
 
+# Quake
+I am working in this directory `/net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS`
+
+```
+MERGE
+jellyfish merge -o AO245_jelly_count_all_19mers.jf AO245_jelly_count_all_19mers\_*
+jellyfish merge -o AO248_jelly_count_all_19mers.jf AO248_jelly_count_all_19mers\_*
+
+DUMP
+jellyfish dump -c -t AO245_jelly_count_all_19mers -o AO245_jelly_dump_all_19mers
+jellyfish dump -c -t AO248_jelly_count_all_19mers -o AO248_jelly_dump_all_19mers
+
+INTERPRET
+/usr/local/quake/bin/cov_model.py --int AO245_jelly_dump_all_19mers
+/usr/local/quake/bin/cov_model.py --int AO248_jelly_dump_all_19mers
+
+CORRECT
+/usr/local/quake/bin/correct -f tymp_uncorrected_data -z -k 19 -c XXX -m AO245_jelly_dump_all_19mers -p 4
+/usr/local/quake/bin/correct -f oct_uncorrected_data -z -k 19 -c XXX -m AO248_jelly_dump_all_19mers -p 4
+
+```
 # Kmer
 The kmer approach using RepArk.pl used a default kmer size of 31 bases. I am going to try a larger kmer size as follows:
 
