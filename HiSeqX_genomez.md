@@ -71,6 +71,14 @@ I renamed the paired files as recommended in the abyss manual. Here is the comma
 ```
 abyss-pe np=8 name=AO248 lib='pea' k=64 pea='AO248_R1_trim_paired.cor_1.fq.gz AO248_R2_trim_paired.cor_2.fq.gz' se='AO248_R1_trim_paired.cor_single.fastq.gz AO248_R2_trim_paired.cor_single.fastq.gz AO248_R1_trim_single.cor.fastq.gz AO248_R2_trim_single.cor.fastq.gz'
 ```
+and for tympa:
+```
+/work/ben/2016_XL_ST_liver_RNAseq/Sample_BenEvansBJE4168cDNA_Library
+ ```
+```
+abyss-pe np=8 name=AO248 lib='pea' k=64 pea='AO245_R1_trim_paired.cor_1.fq.gz AO245_R2_trim_paired.cor_2.fq.gz' se='AO245_R1_trim_paired.cor_single.fastq.gz AO245_R2_trim_paired.cor_single.fastq.gz AO245_R1_trim_single.cor.fastq.gz AO245_R2_trim_single.cor.fastq.gz'
+```
+
 
 # Kmer
 The kmer approach using RepArk.pl used a default kmer size of 31 bases. I am going to try a larger kmer size as follows:
