@@ -84,12 +84,13 @@ here are the assembly commands:
 ```
 /work/ben/trinityrnaseq-2.1.1/Trinity --seqType fq --left BJE3909cDNA_R1_trim_paired.fastq.gz --right BJE3909cDNA_R2_trim_paired.fastq.gz --CPU 6 --max_memory 20G
 /work/ben/trinityrnaseq-2.1.1/Trinity --seqType fq --left BJE4168cDNA_R1_trim_paired.fastq.gz --right BJE4168cDNA_R2_trim_paired.fastq.gz --CPU 6 --max_memory 20G
-
+```
 
 Update in July, 2016.  I am working with the Octomys and Tympanoctomys trinity assemblies again in order to provide Nate with some preliminary data for his proposal.  I have renamed the trinity.fasta files as follows: 
+```
 '/home/ben/2014_Tympanoctomys_transcriptomes/Tympano/Tympano_joint_trinity_assembly_with_concatenated_reads/trinity_out_dir/Tympa_all_transcriptomes_assembled_together.fasta'
 '/home/ben/2014_Tympanoctomys_transcriptomes/Octomys/Octomys_joint_trinity_assembly_with_concatenated_reads/trinity_out_dir/Octomys_all_transcriptomes_assembled_together.fasta'
-
+```
 These have 280,712 and 308,854 assembled sequences for T. barrarae and O. mimax, respectively.  Then I used cd-hit-est to reduce redundancy as follows:
 ```
 /usr/local/cdhit/cd-hit-v4.6.1-2012-08-27/cd-hit-est -i Tympa_all_transcriptomes_assembled_together.fasta -o ./cdhit_est/Tympa_all_transcriptomes_assembled_together_unique.fasta -c 1.00 -n 10 -M 2000 -T 8
@@ -102,10 +103,12 @@ and
 
 And for XL and XT
 
+The denovo assembly generated 71067 sequences for trop BJE3909 and XXX for laevis BJE4168.  Now making unique with cd-hit-est
+
 ```
 /usr/local/cdhit/cd-hit-v4.6.1-2012-08-27/cd-hit-est -i Assembled_BJE4168_Laevis_Trinity.fasta -o Assembled_BJE4168_Laevis_Trinity_unique.fasta -c 1.00 -n 10 -M 2000 -T 8
 
-/usr/local/cdhit/cd-hit-v4.6.1-2012-08-27/cd-hit-est -i Assembled_BJE3909_Tropicalis_Trinity.fasta -o Assembled_BJE3909_Tropicalis_Trinity_unique.fasta -c 1.00 -n 10 -M 2000 -T 8
+/usr/local/cdhit/cd-hit-v4.6.1-2012-08-27/cd-hit-est -i /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/Xenopus_for_comparison/BJE3909_trinity/BJE3909_trop_denovo_assembly_Trinity.fasta -o /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/Xenopus_for_comparison/BJE3909_trinity/BJE3909_trop_denovo_assembly_Trinity_unique.fasta -c 1.00 -n 10 -M 2000 -T 8
 ```
 
 
