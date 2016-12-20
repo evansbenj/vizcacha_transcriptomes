@@ -103,10 +103,10 @@ and
 
 And for XL and XT
 
-The denovo assembly generated 71067 sequences for trop BJE3909 and XXX for laevis BJE4168.  Now making unique with cd-hit-est
+The denovo assembly generated 71067 sequences for trop BJE3909 and 123883 for laevis BJE4168.  Now making unique with cd-hit-est
 
 ```
-/usr/local/cdhit/cd-hit-v4.6.1-2012-08-27/cd-hit-est -i Assembled_BJE4168_Laevis_Trinity.fasta -o Assembled_BJE4168_Laevis_Trinity_unique.fasta -c 1.00 -n 10 -M 2000 -T 8
+/usr/local/cdhit/cd-hit-v4.6.1-2012-08-27/cd-hit-est -i /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/Xenopus_for_comparison/BJE4168_trinity/trinity_out_dir/Assembled_BJE4168_Laevis_Trinity.fasta -o /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/Xenopus_for_comparison/BJE4168_trinity/trinity_out_dir/Assembled_BJE4168_Laevis_Trinity_unique.fasta -c 1.00 -n 10 -M 2000 -T 8
 
 /usr/local/cdhit/cd-hit-v4.6.1-2012-08-27/cd-hit-est -i /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/Xenopus_for_comparison/BJE3909_trinity/BJE3909_trop_denovo_assembly_Trinity.fasta -o /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/Xenopus_for_comparison/BJE3909_trinity/BJE3909_trop_denovo_assembly_Trinity_unique.fasta -c 1.00 -n 10 -M 2000 -T 8
 ```
