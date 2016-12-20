@@ -112,6 +112,17 @@ The denovo assembly generated 71067 sequences for trop BJE3909 and 123883 for la
 ```
 This resulted in 70747 unique sequences for trop and 123277 for laevis.
 
+# Mean and length of assembled transcripts
+
+Use samtools faidx input.fasta to generate an index of each file.  Then type this 
+`
+awk '{ total += $2 } END { print total/NR }' XXXunique.fasta.fai
+`
+To ger the mean and this to get the total length:
+`
+awk '{ total += $2 } END { print total }' XXXunique.fasta.fai
+`
+
 Here are some old commands for the ST and XL unigene dbs:
 
 ```
