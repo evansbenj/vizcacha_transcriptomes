@@ -110,7 +110,7 @@ The denovo assembly generated 71067 sequences for trop BJE3909 and 123883 for la
 
 /usr/local/cdhit/cd-hit-v4.6.1-2012-08-27/cd-hit-est -i /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/Xenopus_for_comparison/BJE3909_trinity/BJE3909_trop_denovo_assembly_Trinity.fasta -o /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/Xenopus_for_comparison/BJE3909_trinity/BJE3909_trop_denovo_assembly_Trinity_unique.fasta -c 1.00 -n 10 -M 2000 -T 8
 ```
-This resulted in 70747 unique sequences for trop and XXX for laevis.
+This resulted in 70747 unique sequences for trop and 123277 for laevis.
 
 Here are some old commands for the ST and XL unigene dbs:
 
