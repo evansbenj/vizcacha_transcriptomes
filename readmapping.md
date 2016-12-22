@@ -152,6 +152,45 @@ java -jar ~/picard-tools-1.131/picard.jar AddOrReplaceReadGroups \
 
 
 ```
+and for xennies
+```
+~/jre1.8.0_111/bin/java -jar ~/picard-tools-1.131/picard.jar AddOrReplaceReadGroups \
+      I=/net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/Xenopus_for_comparison/BJE3909_trinity/trop_to_laevis_RNAseq_aln_sorted.bam \
+      O=/net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/Xenopus_for_comparison/BJE3909_trinity/trop_to_laevis_RNAseq_aln_sorted_rg.bam \
+      RGID=nothing \
+      RGLB=nothing \
+      RGPL=illumina \
+      RGPU=nothing \
+      RGSM=nothing
+
+~/jre1.8.0_111/bin/java -jar ~/picard-tools-1.131/picard.jar AddOrReplaceReadGroups \
+      I=inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/Xenopus_for_comparison/BJE4168_trinity/laevis_to_trop_RNAseq_aln_sorted.bam \
+      O=inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/Xenopus_for_comparison/BJE4168_trinity/laevis_to_trop_RNAseq_aln_sorted_sorted_rg.bam \
+      RGID=nothing \
+      RGLB=nothing \
+      RGPL=illumina \
+      RGPU=nothing \
+      RGSM=nothing
+
+
+~/jre1.8.0_111/bin/java -jar ~/picard-tools-1.131/picard.jar AddOrReplaceReadGroups \
+      I=/net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/Xenopus_for_comparison/BJE3909_trinity/trop_to_trop_RNAseq_aln_sorted.bam \
+      O=/net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/Xenopus_for_comparison/BJE3909_trinity/trop_to_trop_RNAseq_aln_sorted_rg.bam \
+      RGID=nothing \
+      RGLB=nothing \
+      RGPL=illumina \
+      RGPU=nothing \
+      RGSM=nothing
+
+~/jre1.8.0_111/bin/java -jar ~/picard-tools-1.131/picard.jar AddOrReplaceReadGroups \
+      I=/net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/Xenopus_for_comparison/BJE4168_trinity/laevis_to_laevis_RNAseq_aln_sorted.bam \
+      O=/net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/Xenopus_for_comparison/BJE4168_trinity/laevis_to_laevis_RNAseq_aln_sorted_rg.bam \
+      RGID=nothing \
+      RGLB=nothing \
+      RGPL=illumina \
+      RGPU=nothing \
+      RGSM=nothing
+ ```
 
 make a bai file
 
