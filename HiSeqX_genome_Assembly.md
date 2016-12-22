@@ -50,3 +50,11 @@ abyss-tabtomd AO248-stats.tab >AO248-stats.md
 directory:
 `/work/ben/2017_Tymp_Oct_HiSeqX/AO248_quaked_data`
 assembly is either `AO248-contigs.fa` or `AO248-unitigs.fa`
+
+
+# Assembling repeat elements using Repark from wgs reads
+
+From within this directory: `/net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO245_WGS`
+```
+../RepARK.pl -l AO245_R1_trim_paired.cor.fastq.gz -l AO245_R2_trim_paired.cor.fastq.gz -l AO245_R1_trim_paired.cor_single.fastq.gz -l AO245_R1_trim_single.cor.fastq.gz -l AO245_R2_trim_paired.cor_single.fastq.gz -l AO245_R2_trim_single.cor.fastq.gz -k 31 -o repArc_kmer_31
+```
