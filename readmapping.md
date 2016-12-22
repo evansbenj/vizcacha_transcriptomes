@@ -277,6 +277,17 @@ OK, now calculare pi and divergence from the reference. This will be interesting
 ```
 Boot_from_tab_diverge_poly_2015.pl in.tab 1 4_5_1 in_poly_and_diverge.out
 ```
+for xennies
+```
+Boot_from_tab_diverge_poly_2015.pl /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/Xenopus_for_comparison/BJE4168_trinity/laevis_to_trop_RNAseq_aln_sorted_sorted_rg_dedup.bam.vcf.gz.tab 1 3_4_1 /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/Xenopus_for_comparison/BJE4168_trinity/laevis_to_trop_RNAseq_aln_sorted_sorted_rg_dedup.bam.vcf.gz.tab_poly_and_diverge.out
+
+Boot_from_tab_diverge_poly_2015.pl /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/Xenopus_for_comparison/BJE3909_trinity/trop_to_laevis_RNAseq_aln_sorted_rg_dedup.bam.vcf.gz.tab 1 3_4_1 /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/Xenopus_for_comparison/BJE3909_trinity/trop_to_laevis_RNAseq_aln_sorted_rg_dedup.bam.vcf.gz.tab_poly_and_diverge.out
+
+Boot_from_tab_diverge_poly_2015.pl /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/Xenopus_for_comparison/BJE3909_trinity/trop_to_trop_RNAseq_aln_sorted_rg_dedup.bam.vcf.gz.tab 1 3_4_1 1/net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/Xenopus_for_comparison/BJE3909_trinity/trop_to_trop_RNAseq_aln_sorted_rg_dedup.bam.vcf.gz.tab_poly_and_diverge.out
+
+Boot_from_tab_diverge_poly_2015.pl /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/Xenopus_for_comparison/BJE4168_trinity/laevis_to_laevis_RNAseq_aln_sorted_rg_dedup.bam.vcf.gz.tab 1 3_4_1 /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/Xenopus_for_comparison/BJE4168_trinity/laevis_to_laevis_RNAseq_aln_sorted_rg_dedup.bam.vcf.gz.tab_poly_and_diverge.out
+```
+
 # Other mapping statistics
 
 I already generated an index for each transcriptome using the `samtools faidx sample.fa` command.  Now I can get the meann and total length like this:
