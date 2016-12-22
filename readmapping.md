@@ -224,25 +224,7 @@ mv tympa_aln_sorted_rg_dedup.bam tympareads_mappedto_tympaassembly_sorted_rg_ded
 mv octomys_aln_sorted_rg_dedup.bam octreads_mappedto_octomysassembly_sorted_rg_dedup.bam
 ```
 
-Use unified genotyper to call bases
-
-```
-java -Xmx4G -jar /usr/local/gatk/GenomeAnalysisTK.jar -T UnifiedGenotyper -R /home/ben/2014_Tympanoctomys_transcriptomes/Tympano/Tympano_joint_trinity_assembly_with_concatenated_reads/trinity_out_dir/Tympa_all_transcriptomes_assembled_together_unique.fasta -I /home/ben/2014_Tympanoctomys_transcriptomes/Tympano/Tympano_joint_trinity_assembly_with_concatenated_reads/tympa_aln_sorted_rg.bam -out_mode EMIT_ALL_CONFIDENT_SITES -o /home/ben/2014_Tympanoctomys_transcriptomes/Tympano/Tympano_joint_trinity_assembly_with_concatenated_reads/tympa_allconfident.vcf
-
-
-java -Xmx4G -jar /usr/local/gatk/GenomeAnalysisTK.jar -T UnifiedGenotyper -R /home/ben/2014_Tympanoctomys_transcriptomes/Octomys/Octomys_joint_trinity_assembly_with_concatenated_reads/trinity_out_dir/Octomys_all_transcriptomes_assembled_together_unique.fasta -I /home/ben/2014_Tympanoctomys_transcriptomes/Octomys/Octomys_joint_trinity_assembly_with_concatenated_reads/octomys_aln_sorted_rg.bam -out_mode EMIT_ALL_CONFIDENT_SITES -o /home/ben/2014_Tympanoctomys_transcriptomes/Octomys/Octomys_joint_trinity_assembly_with_concatenated_reads/octomys_allconfident.vcf
-```
-Indel realignment not needed because this is now done with HaplotypeCaller
-Actually use haplotypecaller and then genotypegvcfs to call bases
-
-```
-java -Xmx4G -jar /usr/local/gatk/GenomeAnalysisTK.jar -T HaplotypeCaller -R /home/ben/2014_Tympanoctomys_transcriptomes/Tympano/Tympano_joint_trinity_assembly_with_concatenated_reads/trinity_out_dir/Tympa_all_transcriptomes_assembled_together_unique.fasta -I /home/ben/2014_Tympanoctomys_transcriptomes/Tympano/Tympano_joint_trinity_assembly_with_concatenated_reads/tympa_aln_sorted_rg.bam -out_mode EMIT_ALL_CONFIDENT_SITES -o /home/ben/2014_Tympanoctomys_transcriptomes/Tympano/Tympano_joint_trinity_assembly_with_concatenated_reads/tympa_allconfident.vcf
-
-
-java -Xmx4G -jar /usr/local/gatk/GenomeAnalysisTK.jar -T HaplotypeCaller -R /home/ben/2014_Tympanoctomys_transcriptomes/Octomys/Octomys_joint_trinity_assembly_with_concatenated_reads/trinity_out_dir/Octomys_all_transcriptomes_assembled_together_unique.fasta -I /home/ben/2014_Tympanoctomys_transcriptomes/Octomys/Octomys_joint_trinity_assembly_with_concatenated_reads/octomys_aln_sorted_rg.bam -out_mode EMIT_ALL_CONFIDENT_SITES -o /home/ben/2014_Tympanoctomys_transcriptomes/Octomys/Octomys_joint_trinity_assembly_with_concatenated_reads/octomys_allconfident.vcf
-```
-
-Actually use samtools and bcftools to call genotypes and filter
+Use samtools and bcftools to call genotypes and filter
 ```
 ~/samtools_2016/bin/samtools mpileup -d8000 -ugf /home/ben/2014_Tympanoctomys_transcriptomes/Octomys/Octomys_joint_trinity_assembly_with_concatenated_reads/trinity_out_dir/Octomys_all_transcriptomes_assembled_together_unique.fasta -t DP,AD octreads_mappedto_octomysassembly_sorted_rg_dedup.bam | ~/samtools_2016/bcftools-1.3.1/bcftools call -V indels --format-fields GQ -m -O z | ~/samtools_2016/bcftools-1.3.1/bcftools filter -e 'FORMAT/GT = "." || FORMAT/DP < 10 || FORMAT/GQ < 20 || FORMAT/GQ = "."' -O z -o octreads_mappedto_octomysassembly_sorted_rg_dedup.bam.vcf.gz
 
@@ -253,6 +235,29 @@ Actually use samtools and bcftools to call genotypes and filter
 ~/samtools_2016/bin/samtools mpileup -d8000 -ugf /home/ben/2014_Tympanoctomys_transcriptomes/Octomys/Octomys_joint_trinity_assembly_with_concatenated_reads/trinity_out_dir/Octomys_all_transcriptomes_assembled_together_unique.fasta -t DP,AD tympareads_mappedto_octomysassembly_sorted_rg_dedup.bam | ~/samtools_2016/bcftools-1.3.1/bcftools call -V indels --format-fields GQ -m -O z | ~/samtools_2016/bcftools-1.3.1/bcftools filter -e 'FORMAT/GT = "." || FORMAT/DP < 10 || FORMAT/GQ < 20 || FORMAT/GQ = "."' -O z -o tympareads_mappedto_octomysassembly_sorted_rg_dedup.bam.vcf.gz
 
 ```
+and this stuff for xennies
+
+```
+INDEX
+/usr/local/bin/samtools index /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/Xenopus_for_comparison/BJE3909_trinity/trop_to_laevis_RNAseq_aln_sorted_rg.bam
+/usr/local/bin/samtools index /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/Xenopus_for_comparison/BJE4168_trinity/laevis_to_trop_RNAseq_aln_sorted_sorted_rg.bam
+/usr/local/bin/samtools index /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/Xenopus_for_comparison/BJE3909_trinity/trop_to_trop_RNAseq_aln_sorted_rg.bam
+/usr/local/bin/samtools index /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/Xenopus_for_comparison/BJE4168_trinity/laevis_to_laevis_RNAseq_aln_sorted_rg.bam
+
+MARKDUPS
+~/jre1.8.0_111/bin/java -Xmx1G -jar ~/picard-tools-1.131/picard.jar MarkDuplicates MAX_FILE_HANDLES_FOR_READ_ENDS_MAP=1000 INPUT=/net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/Xenopus_for_comparison/BJE3909_trinity/trop_to_laevis_RNAseq_aln_sorted_rg.bam OUTPUT=/net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/Xenopus_for_comparison/BJE3909_trinity/trop_to_laevis_RNAseq_aln_sorted_rg_dedup.bam METRICS_FILE=/net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/Xenopus_for_comparison/BJE3909_trinity/trop_to_laevis_RNAseq_aln_sorted_rg_dedup_metrics.txt
+~/jre1.8.0_111/bin/java -Xmx1G -jar ~/picard-tools-1.131/picard.jar MarkDuplicates MAX_FILE_HANDLES_FOR_READ_ENDS_MAP=1000 INPUT=/net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/Xenopus_for_comparison/BJE4168_trinity/laevis_to_trop_RNAseq_aln_sorted_sorted_rg.bam OUTPUT=/net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/Xenopus_for_comparison/BJE4168_trinity/laevis_to_trop_RNAseq_aln_sorted_sorted_rg_dedup.bam METRICS_FILE=/net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/Xenopus_for_comparison/BJE4168_trinity/laevis_to_trop_RNAseq_aln_sorted_sorted_rg_dedup_metrics.txt
+~/jre1.8.0_111/bin/java -Xmx1G -jar ~/picard-tools-1.131/picard.jar MarkDuplicates MAX_FILE_HANDLES_FOR_READ_ENDS_MAP=1000 INPUT=/net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/Xenopus_for_comparison/BJE3909_trinity/trop_to_trop_RNAseq_aln_sorted_rg.bam OUTPUT=/net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/Xenopus_for_comparison/BJE3909_trinity/trop_to_trop_RNAseq_aln_sorted_rg_dedup.bam METRICS_FILE=/net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/Xenopus_for_comparison/BJE3909_trinity/trop_to_trop_RNAseq_aln_sorted_rg_dedup_metrics.txt
+~/jre1.8.0_111/bin/java -Xmx1G -jar ~/picard-tools-1.131/picard.jar MarkDuplicates MAX_FILE_HANDLES_FOR_READ_ENDS_MAP=1000 INPUT=/net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/Xenopus_for_comparison/BJE4168_trinity/laevis_to_laevis_RNAseq_aln_sorted_rg.bam OUTPUT=/net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/Xenopus_for_comparison/BJE4168_trinity/laevis_to_laevis_RNAseq_aln_sorted_rg_dedup.bam METRICS_FILE=/net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/Xenopus_for_comparison/BJE4168_trinity/laevis_to_laevis_RNAseq_aln_sorted_rg_dedup_metrics.txt
+
+Genotype
+~/samtools_2016/bin/samtools mpileup -d8000 -ugf /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/Xenopus_for_comparison/BJE4168_trinity/trinity_out_dir/BJE4168_laevis_denovo_assembly_Trinity_unique.fasta -t DP,AD /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/Xenopus_for_comparison/BJE3909_trinity/trop_to_laevis_RNAseq_aln_sorted_rg_dedup.bam | ~/samtools_2016/bcftools-1.3.1/bcftools call -V indels --format-fields GQ -m -O z | ~/samtools_2016/bcftools-1.3.1/bcftools filter -e 'FORMAT/GT = "." || FORMAT/DP < 10 || FORMAT/GQ < 20 || FORMAT/GQ = "."' -O z -o /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/Xenopus_for_comparison/BJE3909_trinity/trop_to_laevis_RNAseq_aln_sorted_rg_dedup.bam.vcf.gz
+~/samtools_2016/bin/samtools mpileup -d8000 -ugf /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/Xenopus_for_comparison/BJE3909_trinity/BJE3909_trop_denovo_assembly_Trinity_unique.fasta -t DP,AD /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/Xenopus_for_comparison/BJE4168_trinity/laevis_to_trop_RNAseq_aln_sorted_sorted_rg_dedup.bam  | ~/samtools_2016/bcftools-1.3.1/bcftools call -V indels --format-fields GQ -m -O z | ~/samtools_2016/bcftools-1.3.1/bcftools filter -e 'FORMAT/GT = "." || FORMAT/DP < 10 || FORMAT/GQ < 20 || FORMAT/GQ = "."' -O z -o /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/Xenopus_for_comparison/BJE4168_trinity/laevis_to_trop_RNAseq_aln_sorted_sorted_rg_dedup.bam.vcf.gz
+~/samtools_2016/bin/samtools mpileup -d8000 -ugf /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/Xenopus_for_comparison/BJE3909_trinity/BJE3909_trop_denovo_assembly_Trinity_unique.fasta -t DP,AD /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/Xenopus_for_comparison/BJE3909_trinity/trop_to_trop_RNAseq_aln_sorted_rg_dedup.bam  | ~/samtools_2016/bcftools-1.3.1/bcftools call -V indels --format-fields GQ -m -O z | ~/samtools_2016/bcftools-1.3.1/bcftools filter -e 'FORMAT/GT = "." || FORMAT/DP < 10 || FORMAT/GQ < 20 || FORMAT/GQ = "."' -O z -o /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/Xenopus_for_comparison/BJE3909_trinity/trop_to_trop_RNAseq_aln_sorted_rg_dedup.bam.vcf.gz
+~/samtools_2016/bin/samtools mpileup -d8000 -ugf /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/Xenopus_for_comparison/BJE4168_trinity/trinity_out_dir/BJE4168_laevis_denovo_assembly_Trinity_unique.fasta -t DP,AD /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/Xenopus_for_comparison/BJE4168_trinity/laevis_to_laevis_RNAseq_aln_sorted_rg_dedup.bam | ~/samtools_2016/bcftools-1.3.1/bcftools call -V indels --format-fields GQ -m -O z | ~/samtools_2016/bcftools-1.3.1/bcftools filter -e 'FORMAT/GT = "." || FORMAT/DP < 10 || FORMAT/GQ < 20 || FORMAT/GQ = "."' -O z -o /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/Xenopus_for_comparison/BJE4168_trinity/laevis_to_laevis_RNAseq_aln_sorted_rg_dedup.bam.vcf.gz
+
+```
+
 
 Make tab delimited files
 ```
