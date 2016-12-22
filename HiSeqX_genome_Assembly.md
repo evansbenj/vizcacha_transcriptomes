@@ -58,3 +58,7 @@ From within this directory: `/net/infofile4-inside/volume1/scratch/ben/2016_Tymp
 ```
 ../RepARK.pl -l AO245_R1_trim_paired.cor.fastq.gz -l AO245_R2_trim_paired.cor.fastq.gz -l AO245_R1_trim_paired.cor_single.fastq.gz -l AO245_R1_trim_single.cor.fastq.gz -l AO245_R2_trim_paired.cor_single.fastq.gz -l AO245_R2_trim_single.cor.fastq.gz -k 31 -o repArc_kmer_31
 ```
+and this directory `/net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO248_WGS`
+```
+../RepARK.pl -l AO248_R1_trim_paired.cor.fastq.gz -l AO248_R2_trim_paired.cor.fastq.gz -l AO248_R1_trim_paired.cor_single.fastq.gz -l AO248_R2_trim_paired.cor_single.fastq.gz -l AO248_R1_trim_single.cor.fastq.gz -l AO248_R2_trim_single.cor.fastq.gz -k 31 -o repArc_AO248_kmer_31
+```
