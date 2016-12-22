@@ -92,6 +92,25 @@ sort the bam files
 
 ```
 
+and for xennies
+```
+delete sams
+rm -f /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/Xenopus_for_comparison/BJE3909_trinity/trop_to_laevis_RNAseq_aln.sam
+rm -f /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/Xenopus_for_comparison/BJE4168_trinity/laevis_to_trop_RNAseq_aln.sam
+rm -f /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/Xenopus_for_comparison/BJE3909_trinity/trop_to_trop_RNAseq_aln.sam
+rm -f /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/Xenopus_for_comparison/BJE4168_trinity/laevis_to_laevis_RNAseq_aln.sam
+
+sort bams
+/usr/local/bin/samtools sort /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/Xenopus_for_comparison/BJE3909_trinity/trop_to_laevis_RNAseq_aln.bam /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/Xenopus_for_comparison/BJE3909_trinity/trop_to_laevis_RNAseq_aln_sorted
+
+/usr/local/bin/samtools sort /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/Xenopus_for_comparison/BJE4168_trinity/laevis_to_trop_RNAseq_aln.bam /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/Xenopus_for_comparison/BJE4168_trinity/laevis_to_trop_RNAseq_aln_sorted
+
+/usr/local/bin/samtools sort /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/Xenopus_for_comparison/BJE3909_trinity/trop_to_trop_RNAseq_aln.bam /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/Xenopus_for_comparison/BJE3909_trinity/trop_to_trop_RNAseq_aln_sorted
+
+/usr/local/bin/samtools sort /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/Xenopus_for_comparison/BJE4168_trinity/laevis_to_laevis_RNAseq_aln.bam /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/Xenopus_for_comparison/BJE4168_trinity/laevis_to_laevis_RNAseq_aln_sorted
+```
+
+
 add a readgroup with picard
 ```
 java -jar ~/picard-tools-1.131/picard.jar AddOrReplaceReadGroups \
