@@ -62,3 +62,6 @@ and this directory `/net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Oct
 ```
 ../RepARK.pl -l AO248_R1_trim_paired.cor.fastq.gz -l AO248_R2_trim_paired.cor.fastq.gz -l AO248_R1_trim_paired.cor_single.fastq.gz -l AO248_R2_trim_paired.cor_single.fastq.gz -l AO248_R1_trim_single.cor.fastq.gz -l AO248_R2_trim_single.cor.fastq.gz -k 31 -o repArc_AO248_kmer_31
 ```
+I also did this with a k-mer size of 45. I used this one liner to output the highest coverage contig in the velvet_repeat_lib directory:
+
+grep -o -P '(?<=cov_).*(?=)' contigs.fa | sort -rn | head -n 1
