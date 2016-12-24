@@ -68,7 +68,7 @@ grep -o -P '(?<=cov_).*(?=)' contigs.fa | sort -rn | head -n 1
 ```
 This gets the headers of the entries with the highest coverage:
 ```
-grep -P '(?<=cov_).*(?=)' contigs.fa | sort -rn | head -n 10
+grep -o -P '(?<=cov_).*(?=)' contigs.fa | sort -rn | head -n 10
 ```
 
 print out a fasta file
@@ -97,19 +97,31 @@ Here is the results of the blast output
 /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO248_WGS/abyss_genome_assembly/repArc_AO248_kmer_31_to_AO248-scaffolds.fa_blastable
 ```
 
-So, how many times does the most repetitive element show up in the assembly?  First find the most repetive element like thisL
+So, how many times does the most repetitive element show up in the assembly?  First find the coverage of the 10 most repetive elements like this:
 ```
 grep -o -P '(?<=cov_).*(?=)' /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO248_WGS/repArc_AO248_kmer_31/velvet_repeat_lib/contigs.fa | sort -rn | head -n 10
 ```
-or get the headers:
 ```
-grep -P '(?<=cov_).*(?=)' /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO248_WGS/repArc_AO248_kmer_31/velvet_repeat_lib/contigs.fa | sort -rn | head -n 10
+82.937500
+82.903229
+77.638885
+74.660004
+73.687500
+73.628571
+73.393936
+72.500000
+71.366669
+70.621620
+```
 
+Now, get the header of the highest coverage one.
 ```
-For tympa, here is the contig for the repetitive elements
-```
-/net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO245_WGS/repArc_kmer_31/velvet_repeat_lib/contigs.fa
+grep '82.937500' /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO245_WGS/repArc_kmer_31/velvet_repeat_lib/contigs.fa
 ```
 ```
-grep -P '(?<=cov_).*(?=)' /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO245_WGS/repArc_kmer_31/velvet_repeat_lib/contigs.fa | sort -rn | head -n 10
+>NODE_251811_length_32_cov_82.937500
+```
+print out a fasta file
+```
+awk -v seq="NODE_251811_length_32_cov_82.937500" -v RS='>' '$1 == seq {print RS $0}' /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO245_WGS/repArc_kmer_31/velvet_repeat_lib/contigs.fa
 ```
