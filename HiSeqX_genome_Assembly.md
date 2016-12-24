@@ -66,7 +66,12 @@ I also did this with a k-mer size of 45. I used this one liner to output the hig
 ```
 grep -o -P '(?<=cov_).*(?=)' contigs.fa | sort -rn | head -n 1
 ```
+This gets the headers of the entries with the highest coverage:
+```
+grep -P '(?<=cov_).*(?=)' contigs.fa | sort -rn | head -n 10
+```
+
 print out a fasta file
 ```
-awk -v seq="sequence2" -v RS='>' '$1 == seq {print RS $0}' file
+awk -v seq="NODE_9_length_29_cov_3.000000" -v RS='>' '$1 == seq {print RS $0}' contigs.fa
 ```
