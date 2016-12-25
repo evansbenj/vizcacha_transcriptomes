@@ -88,6 +88,19 @@ In the above command, could add `-max_target_seqs 1` if we want to restrict the 
 
 # Also make a blast database out of both transcriptome assemblies
 
+The assemblies are here
+```
+/home/ben/2014_Tympanoctomys_transcriptomes/Tympano/Tympano_joint_trinity_assembly_with_concatenated_reads/trinity_out_dir/Tympa_all_transcriptomes_assembled_together.fasta
+/home/ben/2014_Tympanoctomys_transcriptomes/Octomys/Octomys_joint_trinity_assembly_with_concatenated_reads/trinity_out_dir/Octomys_all_transcriptomes_assembled_together.fasta
+```
+Here's the commands to make the blast dbs out of the transcriptome assemblies:
+
+/usr/local/blast/2.3.0/bin/makeblastdb -in /home/ben/2014_Tympanoctomys_transcriptomes/Tympano/Tympano_joint_trinity_assembly_with_concatenated_reads/trinity_out_dir/Tympa_all_transcriptomes_assembled_together.fasta -dbtype nucl -out /home/ben/2014_Tympanoctomys_transcriptomes/Tympano/Tympano_joint_trinity_assembly_with_concatenated_reads/trinity_out_dir/Tympa_all_transcriptomes_assembled_together.fasta_blastable
+
+/usr/local/blast/2.3.0/bin/makeblastdb -in /home/ben/2014_Tympanoctomys_transcriptomes/Octomys/Octomys_joint_trinity_assembly_with_concatenated_reads/trinity_out_dir/Octomys_all_transcriptomes_assembled_together.fasta -dbtype nucl -out /home/ben/2014_Tympanoctomys_transcriptomes/Octomys/Octomys_joint_trinity_assembly_with_concatenated_reads/trinity_out_dir/Octomys_all_transcriptomes_assembled_together.fasta_blastable
+```
+
+
 # Examining the incidence of repetitive elements in the Assembly
 
 Here is the repeat element assembly:
