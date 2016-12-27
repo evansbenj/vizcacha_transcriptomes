@@ -112,6 +112,20 @@ The denovo assembly generated 71067 sequences for trop BJE3909 and 123883 for la
 ```
 This resulted in 70747 unique sequences for trop and 123277 for laevis.
 
+# Coding regions
+
+I used transdecoder to predict CDS
+```
+/usr/local/transdecoder/TransDecoder.LongOrfs -t Tympa_all_transcriptomes_assembled_together_unique.fasta
+/usr/local/transdecoder/TransDecoder.LongOrfs -t Octomys_all_transcriptomes_assembled_together_unique.fasta
+```
+Output is here:
+```
+/home/ben/2014_Tympanoctomys_transcriptomes/Tympano/Tympano_joint_trinity_assembly_with_concatenated_reads/trinity_out_dir/Tympa_all_transcriptomes_assembled_together_unique.fasta.transdecoder_dir
+/home/ben/2014_Tympanoctomys_transcriptomes/Octomys/Octomys_joint_trinity_assembly_with_concatenated_reads/trinity_out_dir/Octomys_all_transcriptomes_assembled_together_unique.fasta.transdecoder_dir
+```
+
+
 # Mean and length of assembled transcripts
 
 Use samtools faidx input.fasta to generate an index of each file.  Then type this 
