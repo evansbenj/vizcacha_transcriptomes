@@ -124,8 +124,12 @@ Output is here:
 /home/ben/2014_Tympanoctomys_transcriptomes/Tympano/Tympano_joint_trinity_assembly_with_concatenated_reads/trinity_out_dir/Tympa_all_transcriptomes_assembled_together_unique.fasta.transdecoder_dir
 /home/ben/2014_Tympanoctomys_transcriptomes/Octomys/Octomys_joint_trinity_assembly_with_concatenated_reads/trinity_out_dir/Octomys_all_transcriptomes_assembled_together_unique.fasta.transdecoder_dir
 ```
+# Blast transcriptome to genome assembly
 
-
+To check for pseudogenes, blast entire transcriptome to genome assembly like this, for octomys:
+```
+/usr/local/blast/2.3.0/bin/blastn -query /home/ben/2014_Tympanoctomys_transcriptomes/Octomys/Octomys_joint_trinity_assembly_with_concatenated_reads/trinity_out_dir/Octomys_all_transcriptomes_assembled_together_unique.fasta -db /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO248_WGS/abyss_genome_assembly/AO248-scaffolds.fa_blastable -outfmt 6 -out /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/Oct_RNAseq_blasted_to_Oct_WGS_genome_assembly/Oct_RNAseq_blasted_to_Oct_WGS_genome_assembly.out
+```
 # Mean and length of assembled transcripts
 
 Use samtools faidx input.fasta to generate an index of each file.  Then type this 
