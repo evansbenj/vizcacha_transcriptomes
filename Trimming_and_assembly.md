@@ -130,6 +130,106 @@ To check for pseudogenes, blast entire transcriptome to genome assembly like thi
 ```
 /usr/local/blast/2.3.0/bin/blastn -query /home/ben/2014_Tympanoctomys_transcriptomes/Octomys/Octomys_joint_trinity_assembly_with_concatenated_reads/trinity_out_dir/Octomys_all_transcriptomes_assembled_together_unique.fasta -db /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO248_WGS/abyss_genome_assembly/AO248-scaffolds.fa_blastable -outfmt 6 -out /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/Oct_RNAseq_blasted_to_Oct_WGS_genome_assembly/Oct_RNAseq_blasted_to_Oct_WGS_genome_assembly.out
 ```
+
+# Assess how many exons match multiple scaffolds	
+I then parsed the blast output from the query of the assembled transcriptomes to the genome with this script (parses_RNAseq_blasted_to_WGSgenome_assembly.pl).  The proportion of exons with multiple matches can then be assessed by dividing by the number of lines in the blast output (wc -l blast_output). This output is hardcoded in the script.
+```
+#!/usr/bin/perl
+use warnings;
+use strict;
+
+# This program reads in a blast output from a RNAseq transcriptome assembly to a WGS genome assembly.
+# for each portion of each query, I check if that same portion matches more than one place in the genome
+# assembly
+
+# here is the format of the blast output
+
+# Column headers:
+# qseqid sseqid pident length mismatch gapopen qstart qend sstart send evalue bitscore
+
+#  1.	 qseqid	 query (e.g., gene) sequence id
+#  2.	 sseqid	 subject (e.g., reference genome) sequence id
+#  3.	 pident	 percentage of identical matches
+#  4.	 length	 alignment length
+#  5.	 mismatch	 number of mismatches
+#  6.	 gapopen	 number of gap openings
+#  7.	 qstart	 start of alignment in query
+#  8.	 qend	 end of alignment in query
+#  9.	 sstart	 start of alignment in subject
+#  10.	 send	 end of alignment in subject
+#  11.	 evalue	 expect value
+#  12.	 bitscore	 bit score
+
+my $outputfile = "RNAseq_to_WGS_doublehits.out";
+unless (open(OUTFILE, ">$outputfile"))  {
+	print "I can\'t write to $outputfile  $!\n\n";
+	exit;
+}
+print "Creating output file: $outputfile\n";
+
+# open blast results
+open (DATA, "Oct_RNAseq_blasted_to_Oct_WGS_genome_assembly_subset.out") or die "Failed to open laevis Blast results";
+
+my @temp;
+my %blast_results;
+my $key;
+my $counter=0;
+my $previous_gene="";
+my $gene;
+my $start;
+my $stop;
+my $previous_start;
+my $previous_stop;
+my $allowable_overlap=20;
+my $range;
+my $previous_range;
+
+while ( my $line = <DATA>) {
+	@temp = split("\t",$line);
+	$gene = $temp[0];
+	# check if we are on the same gene 
+	# ranges are $temp[6] and $temp[7] and $previous_start and $previous_stop
+	if ($gene eq $previous_gene){ 
+		if (($temp[6] <= $previous_stop)&&($previous_start <= $temp[7])){ # check if there is overlap
+			$blast_results{$temp[0]}[$counter] = $temp[6];
+			$counter+=1;
+			$blast_results{$temp[0]}[$counter] = $temp[7];
+			$counter+=1;
+		}
+		else{
+			$counter=0;
+			$blast_results{$temp[0]}[$counter] = $temp[6];
+			$counter+=1;
+			$blast_results{$temp[0]}[$counter] = $temp[7];
+			$counter+=1;
+		}
+	}	
+	else{
+		$counter=0;
+		$blast_results{$temp[0]}[$counter] = $temp[6];
+		$counter+=1;
+		$blast_results{$temp[0]}[$counter] = $temp[7];
+		$counter+=1;		
+	}
+	$previous_gene=$gene;
+	$previous_start=$temp[6];
+	$previous_stop=$temp[7];
+}	
+
+close DATA;
+
+my $overlap=0;
+foreach my $transcript (keys %blast_results) {
+	if (scalar( @{ $blast_results{$transcript} } ) > 2) {
+		$overlap +=1;
+		print $transcript,"\n";
+	}
+}
+
+print "The number of exons that had more than one hit is ",$overlap,"\n";	
+```
+
+
 # Mean and length of assembled transcripts
 
 Use samtools faidx input.fasta to generate an index of each file.  Then type this 
