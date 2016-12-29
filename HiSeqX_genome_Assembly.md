@@ -109,6 +109,13 @@ and to blast the repeats from Octomys against the Octomys and tympa transcriptom
 # Examining the incidence of repetitive elements in the RNAseq Assembly
 
 I wrote a script to quantify repeats in UTRs and CDS for each species using gff files male from TransDecoder and the blast results generated above.  The paths for each of these files are hardcoded in the script; just change the comments for Oct and tymp.
+
+The script is in this directory:
+```
+/net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO248_WGS/repArc_AO248_kmer_31/velvet_repeat_lib/contigs.fa_blasted_to_octomys_transcriptiome
+```
+and is called 'quantifies_repeats_in_RNAseq.pl':
+
 ```
 #!/usr/bin/perl
 use warnings;
