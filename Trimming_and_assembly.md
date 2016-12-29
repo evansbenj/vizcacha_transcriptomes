@@ -138,7 +138,11 @@ for trop and laevis after making blast databases:
 ```
 
 # Assess how many exons match multiple scaffolds	
-I then parsed the blast output from the query of the assembled transcriptomes to the genome with this script (parses_RNAseq_blasted_to_WGSgenome_assembly.pl).  The proportion of exons with multiple matches can then be assessed by dividing by the number of lines in the blast output (wc -l blast_output). This output is hardcoded in the script.
+I then parsed the blast output from the query of the assembled transcriptomes to the genome with this script (parses_RNAseq_blasted_to_WGSgenome_assembly.pl) which is located in this directory:
+```
+/net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/Oct_RNAseq_blasted_to_Oct_WGS_genome_assembly
+```
+The proportion of exons with multiple matches can then be assessed by dividing by the number of lines in the blast output (wc -l blast_output). This output is hardcoded in the script.
 ```
 #!/usr/bin/perl
 use warnings;
