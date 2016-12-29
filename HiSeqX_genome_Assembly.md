@@ -82,7 +82,7 @@ grep -o -P '(?<=length_).*(?=_cov)' contigs.fa > length_of_all_highabundancekmer
 ```
 and one with the coverage of each contig:
 ```
-grep -o -P '(?<=length_).*(?=)' contigs.fa > coverage_of_all_highabundancekmers
+grep -o -P '(?<=cov_).*(?=)' contigs.fa > coverage_of_all_highabundancekmers
 ```
 
 # Make a blast database out of the genome assembly
