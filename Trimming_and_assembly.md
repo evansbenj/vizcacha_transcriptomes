@@ -131,6 +131,11 @@ To check for pseudogenes, blast entire transcriptome to genome assembly like thi
 /usr/local/blast/2.3.0/bin/blastn -query /home/ben/2014_Tympanoctomys_transcriptomes/Octomys/Octomys_joint_trinity_assembly_with_concatenated_reads/trinity_out_dir/Octomys_all_transcriptomes_assembled_together_unique.fasta -db /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO248_WGS/abyss_genome_assembly/AO248-scaffolds.fa_blastable -outfmt 6 -out /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/Oct_RNAseq_blasted_to_Oct_WGS_genome_assembly/Oct_RNAseq_blasted_to_Oct_WGS_genome_assembly.out
 ```
 
+for trop and laevis after making blast databases:
+```
+/usr/local/blast/2.3.0/bin/blastn -query BJE3909_trop_denovo_assembly_Trinity_unique.fasta -db /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/Xenopus_genomes_for_comparison/ST_v9.0/Xtropicalis.v9.repeatMasked.fa_blastable -outfmt 6 -out /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/Xenopus_for_comparison/BJE3909_trinity/trop_RNAseq_blasted_to_trop_genome_assembly_v9.0.out
+```
+
 # Assess how many exons match multiple scaffolds	
 I then parsed the blast output from the query of the assembled transcriptomes to the genome with this script (parses_RNAseq_blasted_to_WGSgenome_assembly.pl).  The proportion of exons with multiple matches can then be assessed by dividing by the number of lines in the blast output (wc -l blast_output). This output is hardcoded in the script.
 ```
