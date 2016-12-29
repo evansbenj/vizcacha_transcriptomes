@@ -134,6 +134,7 @@ To check for pseudogenes, blast entire transcriptome to genome assembly like thi
 for trop and laevis after making blast databases:
 ```
 /usr/local/blast/2.3.0/bin/blastn -query BJE3909_trop_denovo_assembly_Trinity_unique.fasta -db /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/Xenopus_genomes_for_comparison/ST_v7.1/20100930/sequences/Xenopus_tropicalis.main_genome.scaffolds.fasta_blastable -outfmt 6 -out /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/Xenopus_for_comparison/BJE3909_trinity/trop_RNAseq_blasted_to_trop_genome_assembly_v7.1.out
+/usr/local/blast/2.3.0/bin/blastn -query BJE4168_laevis_denovo_assembly_Trinity_unique.fasta -db /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/Xenopus_genomes_for_comparison/XL_v9.1/Xla.v91.fa_blastable -outfmt 6 -out /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/Xenopus_for_comparison/BJE4168_trinity/trinity_out_dir/laevis_RNAseq_blasted_to_laevis_genome_assembly_v9.1.out
 ```
 
 # Assess how many exons match multiple scaffolds	
