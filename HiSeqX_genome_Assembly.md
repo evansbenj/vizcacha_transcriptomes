@@ -76,6 +76,15 @@ print out a fasta file
 awk -v seq="NODE_9_length_29_cov_3.000000" -v RS='>' '$1 == seq {print RS $0}' contigs.fa
 ```
 
+Make a file with all of the contig lengths from RepARK:
+```
+grep -o -P '(?<=length_).*(?=_cov)' contigs.fa > length_of_all_highabundancekmers
+```
+and one with the coverage of each contig:
+```
+grep -o -P '(?<=length_).*(?=)' contigs.fa > coverage_of_all_highabundancekmers
+```
+
 # Make a blast database out of the genome assembly
 ```
 /usr/local/blast/2.3.0/bin/makeblastdb -in /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO248_WGS/abyss_genome_assembly/AO248-scaffolds.fa -dbtype nucl -out /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO248_WGS/abyss_genome_assembly/AO248-scaffolds.fa_blastable
