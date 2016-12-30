@@ -347,22 +347,35 @@ blast oct high abundance kmers to oct
 # Identifying unique high coverage kmers in tympa and oct
 
 For octocontigs to tympa contigs
+
 Here is a list of contig names in oct
 `grep '>NODE' contigs.fa > list_of_octo_contig_names`
+
 Get rid of the greaterthan sign
 `perl -pi -w -e 's/>//g;' list_of_octo_contig_names`
+
 Here are the contigs from oct that match tympa
 `awk -F ' ' '{print $1}' octhighabundancekmer_contigs.fa_to_tympahighabundancekmer_contigs.fa_blastable > list_of_octontigs_that_match_tympacontigs`
+
 Here are the contigs from oct that match tympa
 `awk -F ' ' '{print $2}' octhighabundancekmer_contigs.fa_to_tympahighabundancekmer_contigs.fa_blastable > list_of_tympcontigs_that_are_matched_by_octcontigs`
 
 For tymcontigs to oct contigs
+
 Here is a list of contig names in oct
 `grep '>NODE' contigs.fa > list_of_tymp_contig_names`
+
 Get rid of the greaterthan sign
 `perl -pi -w -e 's/>//g;' list_of_tymp_contig_names`
+
 Here are the contigs from oct that match tympa
 `awk -F ' ' '{print $1}' tympahighabundancekmer_contigs.fa_to_octhighabundancekmer_contigs.fa_blastable > list_of_tympcontigs_that_match_octcontigs`
+
 Here are the contigs from oct that match tympa
 `awk -F ' ' '{print $2}' tympahighabundancekmer_contigs.fa_to_octhighabundancekmer_contigs.fa_blastable > list_of_octcontigs_that_are_matched_by_tympcontigs`
+
+I also blasted the contigs to themselves and used my script `/net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_RNAseq/Oct_RNAseq_blasted_to_Oct_WGS_genome_assembly/parses_RNAseq_blasted_to_WGSgenome_assembly.pl` to determine how many of them had more than one match.
+
+Out of 309680 tympa Repark31 contigs, 91448 had more than one match, so 218232 (70%)are unique
+Out of 41770 Oct Repark31 contigs, 19398 had more than one match, so 22372 (54%) are unique
 
