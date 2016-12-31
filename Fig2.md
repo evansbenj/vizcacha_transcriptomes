@@ -1,4 +1,4 @@
-# Here's the script for Fig1 (scatterplot.R):
+# Here's the script for Fig2 (scatterplot.R):
 ```R
 setwd('/projects/Tympanoctomys/2016_WGS_kmer_analysis/AO245_reparc_31')
 library (ggplot2)
