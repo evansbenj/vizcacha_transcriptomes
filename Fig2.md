@@ -18,26 +18,25 @@ dat$color[which(dat$length == "740" & dat$coverage == "3.687838")]<-"black"
 dat$color[which(dat$length == "265" & dat$coverage == "3.060377")]<-"black"
 # reorder so the mtDNA prints last
 dat <- dat[order(-as.numeric(factor(dat$color))),]
-
 d<-ggplot(dat, aes(x=length, y=coverage, colour=color, size = color, fill=factor(color))) +
-  # make it clean
-  theme_bw() + theme(panel.grid.minor=element_blank(),panel.grid.major=element_blank()) + 
-  # label axis 
-  labs(x=expression("Length in base pairs"), y=expression("Coverage")) +
-  # remove the legend
-  theme(legend.position="none") +
-  # add points
-  geom_point(alpha = 1, shape=21) +
-  # fill the dots differently
-  scale_fill_manual(values=c("gray46","royalblue1", "red1")) + 
-  # make the outline of the mtDNA dots black
-  scale_color_manual(values=c("black","royalblue1", "red1"))+
-  # make the mtdna larger
-  scale_size_manual(values=c(2,2,2)) +
-  # plot in seperate facets
-  facet_grid(. ~ species) +
-  # remove the strips on top
-  theme(strip.background = element_blank(), strip.text.x = element_blank()) 
+  # make it clean
+  theme_bw() + theme(panel.grid.minor=element_blank(),panel.grid.major=element_blank()) + 
+  # label axis 
+  labs(x=expression("Length in base pairs"), y=expression("Coverage")) +
+  # remove the legend
+  theme(legend.position="none") +
+  # add points
+  geom_point(alpha = 1, shape=21) +
+  # fill the dots differently
+  scale_fill_manual(values=c("gray46","royalblue1", "red1")) + 
+  # make the outline of the mtDNA dots black
+  scale_color_manual(values=c("black","royalblue1", "red1"))+
+  # make the mtdna larger
+  scale_size_manual(values=c(2,2,2)) +
+  # plot in seperate facets
+  facet_grid(. ~ species) +
+  # remove the strips on top
+  theme(strip.background = element_blank(), strip.text.x = element_blank()) 
 d
 dev.off
 ```
