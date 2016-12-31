@@ -4,6 +4,8 @@ setwd('/projects/Tympanoctomys/2016_WGS_kmer_analysis/AO245_reparc_31')
 library (ggplot2)
 pdf("contig_length_and_coverage.pdf",w=8, h=4, version="1.4", bg="transparent")
 dat = read.table("high_abundance_kmer_contigs_coverage_and_length.txt", header=TRUE)
+# add 28 to get the length in base pairs
+dat$length <-dat$length + 28
 dat$color<-"red"
 dat$color[which(dat$species == "octomys")]<-"blue"
 # octomys mtdna
@@ -21,7 +23,7 @@ d<-ggplot(dat, aes(x=length, y=coverage, colour=color, size = color, fill=factor
   # make it clean
   theme_bw() + theme(panel.grid.minor=element_blank(),panel.grid.major=element_blank()) + 
   # label axis 
-  labs(x=expression("Length in kmers"), y=expression("Coverage")) +
+  labs(x=expression("Length in base pairs"), y=expression("Coverage")) +
   # remove the legend
   theme(legend.position="none") +
   # add points
