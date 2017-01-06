@@ -343,6 +343,11 @@ blast oct high abundance kmers to oct
 ```
 /usr/local/blast/2.3.0/bin/blastn -query /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO248_WGS/repArc_AO248_kmer_31/velvet_repeat_lib/contigs.fa -db /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO248_WGS/repArc_AO248_kmer_31/velvet_repeat_lib/contigs.fa_blastable -outfmt 6 -out /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO248_WGS/repArc_AO248_kmer_31/velvet_repeat_lib/octhighabundancekmer_contigs.fa_to_octhighabundancekmer_contigs.fa_blastable
 ```
+blast tymp high abundance kmers to tymp genome
+```
+/usr/local/blast/2.3.0/bin/blastn -query /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO245_WGS/repArc_kmer_29/velvet_repeat_lib/contigs.fa -db ../../abyss_genome_assembly/AO245-scaffolds.fa_blastable -outfmt 6 -out /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO245_WGS/repArc_kmer_29/velvet_repeat_lib/tymphighabundancekmer_contigs.fa_to_tymp_AO245-scaffolds.fa_blastable
+```
+
 
 # Identifying unique high coverage kmers in tympa and oct
 
