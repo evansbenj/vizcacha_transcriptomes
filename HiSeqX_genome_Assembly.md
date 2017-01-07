@@ -297,6 +297,92 @@ Here is the results of the blast output
 /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO248_WGS/abyss_genome_assembly/repArc_AO248_kmer_31_to_AO248-scaffolds.fa_blastable
 ```
 
+This script counts how many times unique high abundance contigs are found in each scaffold (parses_highabundancecontigs_blasted_to_WGSgenome_assembly.pl)
+``` perl
+#!/usr/bin/perl
+use warnings;
+use strict;
+use List::MoreUtils qw(uniq);
+
+# This program reads in a blast output from highabundance kmer contigs to a WGS genome assembly.
+# for each hit, I check will keep track of the genomic scaffold and print out ones with more than one match
+
+# This is different from the analysis RNAseq data blasted to the WGS assembly
+# For that, I check if each portion of the RNAseq transcripts matched more than one place in the genome
+# assembly
+
+# It is also different from the analysis of the blast output blast from highabundance kmer contigs to the RNAseq assembly.
+# For that I checked again how many hits there were and what proportion of the match was in coding or non-coding seqs using 
+# a different script called "quantifies_repeats_in_RNAseq.pl"
+
+# Column headers:
+# qseqid sseqid pident length mismatch gapopen qstart qend sstart send evalue bitscore
+
+#  1.	 qseqid	 query (e.g., gene) sequence id
+#  2.	 sseqid	 subject (e.g., reference genome) sequence id
+#  3.	 pident	 percentage of identical matches
+#  4.	 length	 alignment length
+#  5.	 mismatch	 number of mismatches
+#  6.	 gapopen	 number of gap openings
+#  7.	 qstart	 start of alignment in query
+#  8.	 qend	 end of alignment in query
+#  9.	 sstart	 start of alignment in subject
+#  10.	 send	 end of alignment in subject
+#  11.	 evalue	 expect value
+#  12.	 bitscore	 bit score
+
+my $outputfile = "tymphighcontigs_to_tympgenome.out";
+unless (open(OUTFILE, ">$outputfile"))  {
+	print "I can\'t write to $outputfile  $!\n\n";
+	exit;
+}
+print "Creating output file: $outputfile\n";
+
+# uncomment for oct
+#open (DATA, "repArc_AO248_kmer_31_to_AO248-scaffolds.fa_blastable") or die "Failed to open laevis Blast results";
+# uncomment for tymp
+open (DATA, "/net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO245_WGS/repArc_kmer_29/velvet_repeat_lib/tymphighabundancekmer_contigs.fa_to_tymp_AO245-scaffolds.fa_blastable") or die "Failed to open laevis Blast results";
+
+my @temp;
+my %matches=();
+my %blast_results;
+my $counter=0;
+my $previous_gene="";
+my $gene;
+my @scaffolds;
+
+while ( my $line = <DATA>) {
+	@temp = split("\t",$line);
+	$gene = $temp[0];
+	print $gene,"\n";
+	if ($gene eq $previous_gene){  # this way we count only one repeat per scaffold
+		push(@scaffolds, $temp[1]);
+	}	
+	else{
+		# add up the unique ones
+		my @unique_scaffolds = uniq @scaffolds;
+		foreach(@unique_scaffolds){
+			if(exists($matches{$_."s"})){
+				$matches{$_."s"}+=1;
+			}
+			else{
+				$matches{$_."s"}=1;
+			}
+		}
+		@scaffolds=();
+		push(@scaffolds, $temp[1]);
+	}
+	$previous_gene=$gene;
+}	
+
+close DATA;
+
+foreach my $key (sort { $matches{$a} <=> $matches{$b} } (keys (%matches))) {
+	 print OUTFILE $key,"\t", $matches{$key}, "\n";
+}	
+```
+
+
 So, how many times does the most repetitive element show up in the assembly?  First find the coverage of the 10 most repetive elements like this:
 ```
 grep -o -P '(?<=cov_).*(?=)' /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO248_WGS/repArc_AO248_kmer_31/velvet_repeat_lib/contigs.fa | sort -rn | head -n 10
