@@ -470,3 +470,10 @@ I also blasted the contigs to themselves and used my script `/net/infofile4-insi
 Out of 309680 tympa Repark31 contigs, 91448 had more than one match, so 218232 (70%)are unique
 Out of 41770 Oct Repark31 contigs, 19398 had more than one match, so 22372 (54%) are unique
 
+# Blasting high abundance k-mer contigs against Repbase mammal repeats
+```
+/usr/local/blast/2.3.0/bin/blastn -query /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO248_WGS/repArc_AO248_kmer_31/velvet_repeat_lib/contigs.fa -db mamrep.ref_blastable -out Oct_highabundance_kmercontigs_versus_mammalrepeats.out
+```
+```
+/usr/local/blast/2.3.0/bin/blastn -query /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO245_WGS/repArc_kmer_29/velvet_repeat_lib/contigs.fa -db mamrep.ref_blastable -out Tymp_highabundance_kmercontigs_versus_mammalrepeats.out
+```
