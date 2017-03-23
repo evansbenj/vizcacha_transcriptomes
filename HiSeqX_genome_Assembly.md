@@ -47,6 +47,15 @@ tr '\t' , <AO248-stats.tab >AO248-stats.csv
 abyss-tabtomd AO248-stats.tab >AO248-stats.md
 ```
 
+Here are the stats for the tympa assembly
+``` 
+n	n:500	L50	min	N80	N50	N20	E-size	max	sum	name
+19.19e6	1001950	183636	500	1566	3624	7646	5048	65584	2.383e9	AO245-unitigs.fa
+18.43e6	846121	135760	500	1917	4795	10732	7012	82503	2.423e9	AO245-contigs.fa
+18.34e6	799283	120701	500	2041	5293	12270	8023	113044	2.432e9	AO245-scaffolds.fa
+```
+
+
 directory:
 `/work/ben/2017_Tymp_Oct_HiSeqX/AO248_quaked_data`
 assembly is either `AO248-contigs.fa` or `AO248-unitigs.fa`
