@@ -100,17 +100,17 @@ DUMP
 jellyfish dump -c -t AO245_jelly_count_all_19mers.jf -o AO245_jelly_dump_all_19mers
 
 because merging was not necessary, commandline changed from this:
-jellyfish dump -c -t AO248_jelly_count_all_19mers.jf -o AO248_jelly_dump_all_19mers
+jellyfish dump -c -t AO248_jelly_count_all_19mers.jf -o AO248_jelly_newdump_all_19mers
 to this:
 jellyfish dump -c -t AO248_jelly_count_all_19mers -o AO248_jelly_dump_all_19mers
 
 INTERPRET
-/usr/local/quake/bin/cov_model.py --int AO245_jelly_dump_all_19mers
-/usr/local/quake/bin/cov_model.py --int AO248_jelly_dump_all_19mers
+/usr/local/quake/bin/cov_model.py --int AO245_jelly_newdump_all_19mers
+/usr/local/quake/bin/cov_model.py --int AO248_jelly_newdump_all_19mers
 
 CORRECT
-/usr/local/quake/bin/correct -f tymp_uncorrected_data -z -k 19 -c XXX -m AO245_jelly_dump_all_19mers -p 4
-/usr/local/quake/bin/correct -f oct_uncorrected_data -z -k 19 -c XXX -m AO248_jelly_dump_all_19mers -p 4
+/usr/local/quake/bin/correct -f tymp_newuncorrected_data -z -k 19 -c XXX -m AO245_jelly_newdump_all_19mers -p 4
+/usr/local/quake/bin/correct -f oct_newuncorrected_data -z -k 19 -c XXX -m AO248_jelly_newdump_all_19mers -p 4
 
 ```
 # Update
