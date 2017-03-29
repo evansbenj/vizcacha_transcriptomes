@@ -98,7 +98,8 @@ jellyfish merge -o AO248_jelly_count_all_19mers.jf AO248_jelly_count_all_19mers\
 
 DUMP
 jellyfish dump -c -t AO245_jelly_count_all_19mers.jf -o AO245_jelly_dump_all_19mers
-(because merging was not necessary, commandline changed) from this:
+
+because merging was not necessary, commandline changed from this:
 jellyfish dump -c -t AO248_jelly_count_all_19mers.jf -o AO248_jelly_dump_all_19mers
 to this:
 jellyfish dump -c -t AO248_jelly_count_all_19mers -o AO248_jelly_dump_all_19mers
