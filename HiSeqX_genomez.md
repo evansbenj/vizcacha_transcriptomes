@@ -71,6 +71,15 @@ java -jar /home/ben/Trimmomatic-0.36/trimmomatic-0.36.jar PE -phred33 -trimlog A
 java -jar /home/ben/Trimmomatic-0.36/trimmomatic-0.36.jar PE -phred33 -trimlog AO248.txt AO248_S8_L007_R1_001.fastq.gz AO248_S8_L007_R2_001.fastq.gz AO248_R1_trim_paired.fastq.gz AO248_R1_trim_single.fastq.gz AO248_R2_trim_paired.fastq.gz AO248_R2_trim_single.fastq.gz ILLUMINACLIP:/home/ben/Trimmomatic-0.36/adapters/HiSeqX_overrep_new.fa:2:30:10 SLIDINGWINDOW:4:15 MINLEN:36
 ```
 
+new trim
+
+```
+java -jar /home/ben/Trimmomatic-0.36/trimmomatic-0.36.jar PE -phred33 -trimlog AO245new.txt AO245_S7_L007_R1_001.fastq.gz AO245_S7_L007_R2_001.fastq.gz AO245_R1_newtrim_paired.fastq.gz AO245_R1_trim_newsingle.fastq.gz AO245_R2_newtrim_paired.fastq.gz AO245_R2_newtrim_single.fastq.gz ILLUMINACLIP:/home/ben/Trimmomatic-0.36/adapters/HiSeqX_overrep_new.fa:2:30:10 SLIDINGWINDOW:4:15 MINLEN:36
+
+java -jar /home/ben/Trimmomatic-0.36/trimmomatic-0.36.jar PE -phred33 -trimlog AO248new.txt AO248_S8_L007_R1_001.fastq.gz AO248_S8_L007_R2_001.fastq.gz AO248_R1_newtrim_paired.fastq.gz AO248_R1_newtrim_single.fastq.gz AO248_R2_newtrim_paired.fastq.gz AO248_R2_newtrim_single.fastq.gz ILLUMINACLIP:/home/ben/Trimmomatic-0.36/adapters/HiSeqX_overrep_new.fa:2:30:10 SLIDINGWINDOW:4:15 MINLEN:36
+```
+
+
 # FastQC Again
 This hopefully now will find no overrepresented adaptor seqs, which is accurate
 
