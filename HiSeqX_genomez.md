@@ -93,11 +93,15 @@ zcat /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO248_
 
 MERGE
 jellyfish merge -o AO245_jelly_count_all_19mers.jf AO245_jelly_count_all_19mers\_*
+(merging was not necessary for AO248)
 jellyfish merge -o AO248_jelly_count_all_19mers.jf AO248_jelly_count_all_19mers\_*
 
 DUMP
 jellyfish dump -c -t AO245_jelly_count_all_19mers.jf -o AO245_jelly_dump_all_19mers
+(because merging was not necessary, commandline changed) from this:
 jellyfish dump -c -t AO248_jelly_count_all_19mers.jf -o AO248_jelly_dump_all_19mers
+to this:
+jellyfish dump -c -t AO248_jelly_count_all_19mers -o AO248_jelly_dump_all_19mers
 
 INTERPRET
 /usr/local/quake/bin/cov_model.py --int AO245_jelly_dump_all_19mers
