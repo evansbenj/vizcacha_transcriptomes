@@ -31,13 +31,44 @@ AATGATACGGCGACCACCGAGATCTACACTCTTTCCCTACACGACGCTCTTCCGATCT
 ```
 
 
+# Update
+
+New trimmomatic adapter file (`HiSeqX_overrep_new.fa`) includes the rev comp of each sequence and removes the /1 which specifies that reads only be checked in the forward read
+
+```
+>seq1
+ATCGGAAGAGCACACGTCTGAACTCCAGTCACGAGTGGATATCTCGTATG
+>seq2
+ATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTAGATCTCGGTGGTCGCCGT
+>seq3
+ATCGGAAGAGCACACGTCTGAACTCCAGTCACACTGATATATCTCGTATG
+>TruSeqAdapterIndex22
+GATCGGAAGAGCACACGTCTGAACTCCAGTCACGAGTGGATATCTCGTATGCCGTCTTCTGCTTG
+>TruSeqAdapterIndex25
+GATCGGAAGAGCACACGTCTGAACTCCAGTCACACTGATATATCTCGTATGCCGTCTTCTGCTTG
+>TruSeqUniversalAdapter
+AATGATACGGCGACCACCGAGATCTACACTCTTTCCCTACACGACGCTCTTCCGATCT
+>seq1_revcomp
+CATACGAGATATCCACTCGTGACTGGAGTTCAGACGTGTGCTCTTCCGAT
+>seq2_revcomp
+ACGGCGACCACCGAGATCTACACTCTTTCCCTACACGACGCTCTTCCGAT
+>seq3_revcomp
+CATACGAGATATATCAGTGTGACTGGAGTTCAGACGTGTGCTCTTCCGAT
+>TruSeqAdapterIndex22_revcomp
+CAAGCAGAAGACGGCATACGAGATATCCACTCGTGACTGGAGTTCAGACGTGTGCTCTTCCGATC
+>TruSeqAdapterIndex25_revcomp
+CAAGCAGAAGACGGCATACGAGATATATCAGTGTGACTGGAGTTCAGACGTGTGCTCTTCCGATC
+>TruSeqUniversalAdapter_revcomp
+AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGTAGATCTCGGTGGTCGCCGTATCATT
+```
+
 # Trimming
 
 Trim these data like this:
 ```
-java -jar /home/ben/Trimmomatic-0.36/trimmomatic-0.36.jar PE -phred33 -trimlog AO245.txt AO245_S7_L007_R1_001.fastq.gz AO245_S7_L007_R2_001.fastq.gz AO245_R1_trim_paired.fastq.gz AO245_R1_trim_single.fastq.gz AO245_R2_trim_paired.fastq.gz AO245_R2_trim_single.fastq.gz ILLUMINACLIP:/home/ben/Trimmomatic-0.36/adapters/HiSeqX_overrep.fa:2:30:10 SLIDINGWINDOW:4:15 MINLEN:36
+java -jar /home/ben/Trimmomatic-0.36/trimmomatic-0.36.jar PE -phred33 -trimlog AO245.txt AO245_S7_L007_R1_001.fastq.gz AO245_S7_L007_R2_001.fastq.gz AO245_R1_trim_paired.fastq.gz AO245_R1_trim_single.fastq.gz AO245_R2_trim_paired.fastq.gz AO245_R2_trim_single.fastq.gz ILLUMINACLIP:/home/ben/Trimmomatic-0.36/adapters/HiSeqX_overrep_new.fa:2:30:10 SLIDINGWINDOW:4:15 MINLEN:36
 
-java -jar /home/ben/Trimmomatic-0.36/trimmomatic-0.36.jar PE -phred33 -trimlog AO248.txt AO248_S8_L007_R1_001.fastq.gz AO248_S8_L007_R2_001.fastq.gz AO248_R1_trim_paired.fastq.gz AO248_R1_trim_single.fastq.gz AO248_R2_trim_paired.fastq.gz AO248_R2_trim_single.fastq.gz ILLUMINACLIP:/home/ben/Trimmomatic-0.36/adapters/HiSeqX_overrep.fa:2:30:10 SLIDINGWINDOW:4:15 MINLEN:36
+java -jar /home/ben/Trimmomatic-0.36/trimmomatic-0.36.jar PE -phred33 -trimlog AO248.txt AO248_S8_L007_R1_001.fastq.gz AO248_S8_L007_R2_001.fastq.gz AO248_R1_trim_paired.fastq.gz AO248_R1_trim_single.fastq.gz AO248_R2_trim_paired.fastq.gz AO248_R2_trim_single.fastq.gz ILLUMINACLIP:/home/ben/Trimmomatic-0.36/adapters/HiSeqX_overrep_new.fa:2:30:10 SLIDINGWINDOW:4:15 MINLEN:36
 ```
 
 # FastQC Again
