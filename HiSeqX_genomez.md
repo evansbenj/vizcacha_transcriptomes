@@ -108,6 +108,31 @@ CORRECT
 /usr/local/quake/bin/correct -f oct_uncorrected_data -z -k 19 -c XXX -m AO248_jelly_dump_all_19mers -p 4
 
 ```
+# Update
+
+```
+COUNT
+zcat /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO245_R*_newtrim_*.fastq.gz | jellyfish count /dev/fd/0 -m 19 -s 1000000000 -t 16 -C -o AO245_jelly_newcount_all_19mers
+zcat /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO248_R*_newtrim_*.fastq.gz | jellyfish count /dev/fd/0 -m 19 -s 1000000000 -t 16 -C -o AO248_jelly_newcount_all_19mers
+
+MERGE
+jellyfish merge -o AO245_jelly_newcount_all_19mers.jf AO245_jelly_newcount_all_19mers\_*
+jellyfish merge -o AO248_jelly_newcount_all_19mers.jf AO248_jelly_newcount_all_19mers\_*
+
+DUMP
+jellyfish dump -c -t AO245_jelly_newcount_all_19mers.jf -o AO245_jelly_newdump_all_19mers
+jellyfish dump -c -t AO248_jelly_newcount_all_19mers.jf -o AO248_jelly_newdump_all_19mers
+
+INTERPRET
+/usr/local/quake/bin/cov_model.py --int AO245_jelly_newdump_all_19mers
+/usr/local/quake/bin/cov_model.py --int AO248_jelly_newdump_all_19mers
+
+CORRECT
+/usr/local/quake/bin/correct -f tymp_newuncorrected_data -z -k 19 -c XXX -m AO245_jelly_newdump_all_19mers -p 4
+/usr/local/quake/bin/correct -f oct_newuncorrected_data -z -k 19 -c XXX -m AO248_jelly_newdump_all_19mers -p 4
+
+```
+
 # Assembly wirth Abyss
 
 I made a directory on iqaluk for each genome:
