@@ -147,7 +147,7 @@ where the -c flag is the cutoff (equal to one in both cases based on the interpr
 
 ```
 
-# Assembly wirth Abyss
+# Assembly with Abyss
 
 I made a directory on iqaluk for each genome:
 ```
@@ -164,15 +164,32 @@ and for tympa:
 ```
 abyss-pe np=8 name=AO248 lib='pea' k=64 pea='AO245_R1_trim_paired.cor_1.fq.gz AO245_R2_trim_paired.cor_2.fq.gz' se='AO245_R1_trim_paired.cor_single.fastq.gz AO245_R2_trim_paired.cor_single.fastq.gz AO245_R1_trim_single.cor.fastq.gz AO245_R2_trim_single.cor.fastq.gz'
 ```
-# Update
+# Update (on iqaluk)
+
+first unload this module:
+`module unload intel mkl openmpi`
+
+then load other modules
+```
+module load gcc/4.9.2
+module load openmpi/gcc492-std/1.8.7
+module load boost/gcc492-openmpi187std/1.59.0
+export PATH=/work/ben/abyss/bin:$PATH
+```
 
 I made a directory on iqaluk for each genome:
 ```
 /work/ben/2017_Tymp_Oct_HiSeqX/AO248_newquaked_data
 ```
-I renamed the paired files as recommended in the abyss manual. Here is the commandline for oct:
+I renamed the paired files as recommended in the abyss manual. 
 ```
-abyss-pe np=8 name=AO248 lib='pea' k=64 pea='AO248_R1_newtrim_paired.cor_1.fq.gz AO248_R2_newtrim_paired.cor_2.fq.gz' se='AO248_R1_newtrim_paired.cor_single.fastq.gz AO248_R2_newtrim_paired.cor_single.fastq.gz AO248_R1_newtrim_single.cor.fastq.gz AO248_R2_newtrim_single.cor.fastq.gz'
+mv AO248_R1_newtrim_paired.cor.fastq.gz AO248_R1_newtrim_paired.cor_1.fq.gz
+mv AO248_R2_newtrim_paired.cor.fastq.gz AO248_R2_newtrim_paired.cor_2.fq.gz
+```
+
+Here is the commandline for oct:
+```
+abyss-pe np=24 name=AO248 lib='pea' k=64 pea='AO248_R1_newtrim_paired.cor_1.fq.gz AO248_R2_newtrim_paired.cor_2.fq.gz' se='AO248_R1_newtrim_paired.cor_single.fastq.gz AO248_R2_newtrim_paired.cor_single.fastq.gz AO248_R1_newtrim_single.cor.fastq.gz AO248_R2_newtrim_single.cor.fastq.gz'
 ```
 and for tympa:
 ```
