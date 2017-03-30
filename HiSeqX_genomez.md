@@ -249,9 +249,21 @@ zcat /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO248_
 
 ```
 
+# Reparc
+
+It seems like this program is only installed on the evanslab account:
+
+```
+/home/evanslab/Hymeno_fastqc/RepArk_analysis/RepARK-master/RepARK.pl
+```
+
+I copied this to my account and changed the path of jellyfish in the perl script. Then I issues this command:
+```
+./RepARK.pl -l AO248_R1_newtrim_paired.cor.fastq.gz -l AO248_R2_newtrim_paired.cor.fastq.gz -l AO248_R2_newtrim_paired.cor_single.fastq.gz -l AO248_R1_newtrim_paired.cor_single.fastq.gz -l AO248_R1_newtrim_single.cor.fastq.gz -l AO248_R2_newtrim_single.cor.fastq.gz -o AO245_newtrim_kmer_31
+```
 
 
-The kmer approach using RepArk.pl used a default kmer size of 31 bases. I am going to try a larger kmer size as follows:
+(Old stuff) The kmer approach using RepArk.pl used a default kmer size of 31 bases. I am going to try a larger kmer size as follows:
 
 ```
 ./RepARK.pl -l AO245_R1_trim_paired.fastq.gz -l AO245_R2_trim_paired.fastq.gz -k 70 -o AO245_kmer_70
