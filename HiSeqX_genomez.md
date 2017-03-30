@@ -177,11 +177,16 @@ Count with jellyfish
 zcat /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO245_WGS/*cor*gz | /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/jellyfish-2.2.6/bin/jellyfish count /dev/fd/0 -m 19 -s 1000000000 -t 16 -C -o AO245_jelly_count_afterquake_19mers -Q 5 
 25mer
 zcat /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO245_WGS/*cor*gz | /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/jellyfish-2.2.6/bin/jellyfish count /dev/fd/0 -m 25 -s 1000000000 -t 16 -C -o AO245_jelly_count_afterquake_25mers -Q 5 
+35mer
+zcat /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO245_WGS/*cor*gz | /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/jellyfish-2.2.6/bin/jellyfish count /dev/fd/0 -m 35 -s 1000000000 -t 16 -C -o AO245_jelly_count_afterquake_35mers -Q 5 
 
 19mer
 zcat /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO248_WGS/*cor*gz | /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/jellyfish-2.2.6/bin/jellyfish count /dev/fd/0 -m 19 -s 1000000000 -t 16 -C -o AO248_jelly_count_afterquake_19mers -Q 5 
 25mer
 zcat /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO248_WGS/*cor*gz | /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/jellyfish-2.2.6/bin/jellyfish count /dev/fd/0 -m 25 -s 1000000000 -t 16 -C -o AO248_jelly_count_afterquake_25mers -Q 5
+35mer
+zcat /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO248_WGS/*cor*gz | /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/jellyfish-2.2.6/bin/jellyfish count /dev/fd/0 -m 35 -s 1000000000 -t 16 -C -o AO248_jelly_count_afterquake_35mers -Q 5
+
 ```
 
 Update count with jellyfish
@@ -190,11 +195,16 @@ Update count with jellyfish
 zcat /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO245_WGS/*newtrim*cor*gz | /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/jellyfish-2.2.6/bin/jellyfish count /dev/fd/0 -m 19 -s 1000000000 -t 16 -C -o AO245_newtrim_jelly_count_afterquake_19mers -Q 5 
 25mer
 zcat /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO245_WGS/*newtrim**cor*gz | /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/jellyfish-2.2.6/bin/jellyfish count /dev/fd/0 -m 25 -s 1000000000 -t 16 -C -o AO245_newtrim_jelly_count_afterquake_25mers -Q 5 
+35mer
+zcat /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO245_WGS/*newtrim**cor*gz | /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/jellyfish-2.2.6/bin/jellyfish count /dev/fd/0 -m 35 -s 1000000000 -t 16 -C -o AO245_newtrim_jelly_count_afterquake_35mers -Q 5 
 
 19mer
 zcat /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO248_WGS/*newtrim**cor*gz | /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/jellyfish-2.2.6/bin/jellyfish count /dev/fd/0 -m 19 -s 1000000000 -t 16 -C -o AO248_newtrim_jelly_count_afterquake_19mers -Q 5 
 25mer
 zcat /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO248_WGS/*newtrim**cor*gz | /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/jellyfish-2.2.6/bin/jellyfish count /dev/fd/0 -m 25 -s 1000000000 -t 16 -C -o AO248_newtrim_jelly_count_afterquake_25mers -Q 5
+25mer
+zcat /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO248_WGS/*newtrim**cor*gz | /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/jellyfish-2.2.6/bin/jellyfish count /dev/fd/0 -m 35 -s 1000000000 -t 16 -C -o AO248_newtrim_jelly_count_afterquake_35mers -Q 5
+
 ```
 
 
