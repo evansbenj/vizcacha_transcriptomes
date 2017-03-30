@@ -164,7 +164,23 @@ and for tympa:
 ```
 abyss-pe np=8 name=AO248 lib='pea' k=64 pea='AO245_R1_trim_paired.cor_1.fq.gz AO245_R2_trim_paired.cor_2.fq.gz' se='AO245_R1_trim_paired.cor_single.fastq.gz AO245_R2_trim_paired.cor_single.fastq.gz AO245_R1_trim_single.cor.fastq.gz AO245_R2_trim_single.cor.fastq.gz'
 ```
+# Update
 
+I made a directory on iqaluk for each genome:
+```
+/work/ben/2017_Tymp_Oct_HiSeqX/AO248_newquaked_data
+```
+I renamed the paired files as recommended in the abyss manual. Here is the commandline for oct:
+```
+abyss-pe np=8 name=AO248 lib='pea' k=64 pea='AO248_R1_newtrim_paired.cor_1.fq.gz AO248_R2_newtrim_paired.cor_2.fq.gz' se='AO248_R1_newtrim_paired.cor_single.fastq.gz AO248_R2_newtrim_paired.cor_single.fastq.gz AO248_R1_newtrim_single.cor.fastq.gz AO248_R2_newtrim_single.cor.fastq.gz'
+```
+and for tympa:
+```
+/work/ben/2016_XL_ST_liver_RNAseq/Sample_BenEvansBJE4168cDNA_Library
+ ```
+```
+abyss-pe np=8 name=AO248 lib='pea' k=64 pea='AO245_R1_newtrim_paired.cor_1.fq.gz AO245_R2_newtrim_paired.cor_2.fq.gz' se='AO245_R1_newtrim_paired.cor_single.fastq.gz AO245_R2_newtrim_paired.cor_single.fastq.gz AO245_R1_newtrim_single.cor.fastq.gz AO245_R2_newtrim_single.cor.fastq.gz'
+```
 
 # Kmer on postquake data
 Working in this directory on info.
