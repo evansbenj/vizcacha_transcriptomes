@@ -133,8 +133,10 @@ INTERPRET
 /usr/local/quake/bin/cov_model.py --int AO248_jelly_newdump_all_19mers
 
 CORRECT
-/usr/local/quake/bin/correct -f tymp_newuncorrected_data -z -k 19 -c XXX -m AO245_jelly_newdump_all_19mers -p 4
-/usr/local/quake/bin/correct -f oct_newuncorrected_data -z -k 19 -c XXX -m AO248_jelly_newdump_all_19mers -p 4
+/usr/local/quake/bin/correct -f tymp_newuncorrected_data -z -k 19 -c 1 -m AO245_jelly_newdump_all_19mers -p 4
+/usr/local/quake/bin/correct -f oct_newuncorrected_data -z -k 19 -c 1 -m AO248_jelly_newdump_all_19mers -p 4
+
+where the -c flag is the cutoff (equal to one in both cases based on the interpret command)
 
 ```
 
