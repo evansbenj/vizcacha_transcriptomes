@@ -245,6 +245,7 @@ zcat /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO248_
 ```
 /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/jellyfish-2.2.6/bin/jellyfish histo -o AO248_newtrim_jelly_count_afterquake_19mers.histo AO248_newtrim_jelly_count_afterquake_19mers
 /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/jellyfish-2.2.6/bin/jellyfish histo -o AO248_newtrim_jelly_count_afterquake_25mers.histo AO248_newtrim_jelly_count_afterquake_25mers
+/net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/jellyfish-2.2.6/bin/jellyfish histo -o AO248_newtrim_jelly_count_afterquake_35mers.histo AO248_newtrim_jelly_count_afterquake_35mers
 
 ```
 
