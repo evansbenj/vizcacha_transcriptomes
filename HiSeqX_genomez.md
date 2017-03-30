@@ -91,13 +91,15 @@ COUNT
 zcat /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO245_WGS/AO245_R*_trim_*.fastq.gz | jellyfish count /dev/fd/0 -m 19 -s 1000000000 -t 16 -C -o AO245_jelly_count_all_19mers
 zcat /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO248_WGS/AO248_R*_trim_*.fastq.gz | jellyfish count /dev/fd/0 -m 19 -s 1000000000 -t 16 -C -o AO248_jelly_count_all_19mers
 
-MERGE
+MERGE (merging actually was not necessary for AO245 or AO248)
 jellyfish merge -o AO245_jelly_count_all_19mers.jf AO245_jelly_count_all_19mers\_*
-(merging was not necessary for AO248)
 jellyfish merge -o AO248_jelly_count_all_19mers.jf AO248_jelly_count_all_19mers\_*
 
 DUMP
+because merging was not necessary, commandline changed from this:
 jellyfish dump -c -t AO245_jelly_count_all_19mers.jf -o AO245_jelly_dump_all_19mers
+to this:
+jellyfish dump -c -t AO245_jelly_count_all_19mers -o AO245_jelly_dump_all_19mers
 
 because merging was not necessary, commandline changed from this:
 jellyfish dump -c -t AO248_jelly_count_all_19mers.jf -o AO248_jelly_newdump_all_19mers
@@ -120,13 +122,18 @@ COUNT
 zcat /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO245_WGS/AO245_R*_newtrim_*.fastq.gz | jellyfish count /dev/fd/0 -m 19 -s 1000000000 -t 16 -C -o AO245_jelly_newcount_all_19mers
 zcat /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO248_WGS?AO248_R*_newtrim_*.fastq.gz | jellyfish count /dev/fd/0 -m 19 -s 1000000000 -t 16 -C -o AO248_jelly_newcount_all_19mers
 
-MERGE
+MERGE (actually this was not necessary)
 jellyfish merge -o AO245_jelly_newcount_all_19mers.jf AO245_jelly_newcount_all_19mers\_*
 jellyfish merge -o AO248_jelly_newcount_all_19mers.jf AO248_jelly_newcount_all_19mers\_*
 
-DUMP
+DUMP (because merging was not necessary these changed from this:
 jellyfish dump -c -t AO245_jelly_newcount_all_19mers.jf -o AO245_jelly_newdump_all_19mers
 jellyfish dump -c -t AO248_jelly_newcount_all_19mers.jf -o AO248_jelly_newdump_all_19mers
+to this:
+jellyfish dump -c -t AO245_jelly_newcount_all_19mers -o AO245_jelly_newdump_all_19mers
+jellyfish dump -c -t AO248_jelly_newcount_all_19mers -o AO248_jelly_newdump_all_19mers
+
+
 
 INTERPRET
 /usr/local/quake/bin/cov_model.py --int AO245_jelly_newdump_all_19mers
