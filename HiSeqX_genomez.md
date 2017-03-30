@@ -196,7 +196,7 @@ and for tympa:
 /work/ben/2016_XL_ST_liver_RNAseq/Sample_BenEvansBJE4168cDNA_Library
  ```
 ```
-abyss-pe np=8 name=AO248 lib='pea' k=64 pea='AO245_R1_newtrim_paired.cor_1.fq.gz AO245_R2_newtrim_paired.cor_2.fq.gz' se='AO245_R1_newtrim_paired.cor_single.fastq.gz AO245_R2_newtrim_paired.cor_single.fastq.gz AO245_R1_newtrim_single.cor.fastq.gz AO245_R2_newtrim_single.cor.fastq.gz'
+abyss-pe np=24 name=AO248 lib='pea' k=64 pea='AO245_R1_newtrim_paired.cor_1.fq.gz AO245_R2_newtrim_paired.cor_2.fq.gz' se='AO245_R1_newtrim_paired.cor_single.fastq.gz AO245_R2_newtrim_paired.cor_single.fastq.gz AO245_R1_newtrim_single.cor.fastq.gz AO245_R2_newtrim_single.cor.fastq.gz'
 ```
 
 # Kmer on postquake data
