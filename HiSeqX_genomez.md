@@ -262,6 +262,11 @@ I copied this to my account and changed the path of jellyfish in the perl script
 ./RepARK.pl -l AO248_R1_newtrim_paired.cor.fastq.gz -l AO248_R2_newtrim_paired.cor.fastq.gz -l AO248_R2_newtrim_paired.cor_single.fastq.gz -l AO248_R1_newtrim_paired.cor_single.fastq.gz -l AO248_R1_newtrim_single.cor.fastq.gz -l AO248_R2_newtrim_single.cor.fastq.gz -o AO245_newtrim_kmer_31
 ```
 
+This finished smoothly and results are in this directory:
+`/net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO248_WGS/AO245_newtrim_kmer_31`
+and expecially here:
+`/net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO248_WGS/AO245_newtrim_kmer_31/velvet_repeat_lib`
+
 
 (Old stuff) The kmer approach using RepArk.pl used a default kmer size of 31 bases. I am going to try a larger kmer size as follows:
 
