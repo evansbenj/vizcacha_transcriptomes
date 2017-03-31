@@ -336,6 +336,19 @@ dev.off()
 ## blast mtdna against octomys high abundance kmer contigs
 /usr/local/blast/2.6.0/bin/blastn -query /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO245_WGS/abyss_genome_assembly/Tymp_mtDNA_HM544132.1.fa -db /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO248_WGS/AO245_newtrim_kmer_31/velvet_repeat_lib/contigs.fa_blastable -outfmt 6 -out /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO248_WGS/AO245_newtrim_kmer_31/velvet_repeat_lib/Tymp_mtDNA_HM544132.1_to_AO248_highabundancekmercontigs -evalue 1e-20 -task megablast
 
+Two hits for octomys high abundance kmer contigs
+```
+HM544132.1	NODE_180_length_16302_cov_3.096000	88.508	16289	1794	
+62	1	16262	16238	1	0.0	19643
+HM544132.1	NODE_16084_length_208_cov_3.980769	91.102	236	21	
+0	16534	16769	236	1	2.21e-86	320
+```
+Total length is 16,566 bp because each of the lengths above (16302 and 208) is 28 bp too short.
+
+## blast octomys high abundance kmer contigs against themselves
+/usr/local/blast/2.6.0/bin/blastn -query /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO248_WGS/AO245_newtrim_kmer_31/velvet_repeat_lib/contigs.fa -db /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO248_WGS/AO245_newtrim_kmer_31/velvet_repeat_lib/contigs.fa_blastable -outfmt 6 -out /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO248_WGS/AO245_newtrim_kmer_31/velvet_repeat_lib/AO248_highabundancekmercontigs_to_AO248_highabundancekmercontigs -evalue 1e-20 -task megablast
+
+
 # Parsing the velvet assembly
 I'm in this directory: `/net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO245_kmer_51/velvet_repeat_lib`
 
