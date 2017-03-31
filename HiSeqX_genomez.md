@@ -329,6 +329,10 @@ dev.off()
 # DONE!
 ```
 
+# Make a blast db out of the high abundance kmer contig
+
+/usr/local/blast/2.3.0/bin/makeblastdb -in /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO248_WGS/AO245_newtrim_kmer_31/velvet_repeat_lib/contigs.fa -dbtype nucl -out /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO248_WGS/AO245_newtrim_kmer_31/velvet_repeat_lib/contigs.fa_blastable
+
 # Parsing the velvet assembly
 I'm in this directory: `/net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO245_kmer_51/velvet_repeat_lib`
 
