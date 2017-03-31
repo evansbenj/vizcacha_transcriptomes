@@ -488,3 +488,11 @@ Out of 41770 Oct Repark31 contigs, 19398 had more than one match, so 22372 (54%)
 ```
 
 Before I made the blast db out of the rodent repeats, I replaced all tabs with two underscores and all spaces with one underscore so that the entire fasta header would be output in the blast output.  And then I wrote a script to parse the coverage and length of the high abundance kmer contigs and the category of the repetitive elements in the rodents that they matched.
+
+## Update blasting newtrim high abundance contigs against rodent Repbase
+
+from within this directory: `/net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/Repbase`
+
+```
+/usr/local/blast/2.3.0/bin/blastn -query /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO248_WGS/AO248_newtrim_kmer_31/velvet_repeat_lib/contigs.fa -db /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/Repbase/rodrep.ref_blastable -outfmt 6 -out Oct_newtrim_highabundance_kmercontigs_versus_rodentrepeats.blastn_out -max_target_seqs 1 -task blastn
+```
