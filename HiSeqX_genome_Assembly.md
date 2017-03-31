@@ -124,6 +124,18 @@ and to blast the repeats from Octomys against the Octomys and tympa transcriptom
 /usr/local/blast/2.3.0/bin/blastn -query /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO245_WGS/repArc_kmer_31/velvet_repeat_lib/contigs.fa -db /home/ben/2014_Tympanoctomys_transcriptomes/Tympano/Tympano_joint_trinity_assembly_with_concatenated_reads/trinity_out_dir/Tympa_all_transcriptomes_assembled_together.fasta_blastable -outfmt 6 -out /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO245_WGS/repArc_kmer_31/velvet_repeat_lib/contigs.fa_blasted_to_tympa_transcriptiome -evalue 1e-20 -task megablast 
 ```
 
+## Update
+I made a new db out of the unique transcriptome seqs
+```
+/usr/local/blast/2.3.0/bin/makeblastdb -in Octomys_all_transcriptomes_assembled_together_unique.fasta -dbtype nucl -out Octomys_all_transcriptomes_assembled_together_unique.fasta_blastable
+```
+and here is the blast command (note i do not specify the evalue, so this is 10 by default) from within this directory:
+`/net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO248_WGS/AO248_newtrim_kmer_31`
+```
+/usr/local/blast/2.3.0/bin/blastn -query /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO248_WGS/AO248_newtrim_kmer_31/velvet_repeat_lib/contigs.fa -db /home/ben/2014_Tympanoctomys_transcriptomes/Octomys/Octomys_joint_trinity_assembly_with_concatenated_reads/trinity_out_dir/Octomys_all_transcriptomes_assembled_together_unique.fasta_blastable -outfmt 6 -out Oct_newtrim_highabundance_kmercontigs_versus_uniqueOcttranscriptome.out
+```
+
+
 # Examining the incidence of repetitive elements in the RNAseq Assembly
 
 I wrote a script to quantify repeats in UTRs and CDS for each species using gff files male from TransDecoder and the blast results generated above.  The paths for each of these files are hardcoded in the script; just change the comments for Oct and tymp.
