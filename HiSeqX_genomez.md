@@ -333,6 +333,9 @@ dev.off()
 
 /usr/local/blast/2.3.0/bin/makeblastdb -in /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO248_WGS/AO245_newtrim_kmer_31/velvet_repeat_lib/contigs.fa -dbtype nucl -out /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO248_WGS/AO245_newtrim_kmer_31/velvet_repeat_lib/contigs.fa_blastable
 
+## blast mtdna against octomys high abundance kmer contigs
+/usr/local/blast/2.6.0/bin/blastn -query /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO245_WGS/abyss_genome_assembly/Tymp_mtDNA_HM544132.1.fa -db /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO248_WGS/AO245_newtrim_kmer_31/velvet_repeat_lib/contigs.fa_blastable -outfmt 6 -out /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO248_WGS/AO245_newtrim_kmer_31/velvet_repeat_lib/Tymp_mtDNA_HM544132.1_to_AO248_highabundancekmercontigs -evalue 1e-20 -task megablast
+
 # Parsing the velvet assembly
 I'm in this directory: `/net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO245_kmer_51/velvet_repeat_lib`
 
