@@ -348,6 +348,70 @@ Total length is 16,566 bp because each of the lengths above (16302 and 208) is 2
 ## blast octomys high abundance kmer contigs against themselves
 /usr/local/blast/2.6.0/bin/blastn -query /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO248_WGS/AO245_newtrim_kmer_31/velvet_repeat_lib/contigs.fa -db /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO248_WGS/AO245_newtrim_kmer_31/velvet_repeat_lib/contigs.fa_blastable -outfmt 6 -out /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO248_WGS/AO245_newtrim_kmer_31/velvet_repeat_lib/AO248_highabundancekmercontigs_to_AO248_highabundancekmercontigs -evalue 1e-20 -task megablast
 
+## check how many high abundance kmer contigs have more than one blast hit (`parses_highabund_blasted_to_highabund.pl`):
+
+```
+#!/usr/bin/perl
+use warnings;
+use strict;
+use List::MoreUtils qw/ uniq /;
+
+# This program reads in a blast output from a highabund assembly to itself.
+# for each portion of each query, I check if that same portion matches more than one place in the genome
+# assembly
+
+# here is the format of the blast output
+
+# Column headers:
+# qseqid sseqid pident length mismatch gapopen qstart qend sstart send evalue bitscore
+
+#  1.	 qseqid	 query (e.g., gene) sequence id
+#  2.	 sseqid	 subject (e.g., reference genome) sequence id
+#  3.	 pident	 percentage of identical matches
+#  4.	 length	 alignment length
+#  5.	 mismatch	 number of mismatches
+#  6.	 gapopen	 number of gap openings
+#  7.	 qstart	 start of alignment in query
+#  8.	 qend	 end of alignment in query
+#  9.	 sstart	 start of alignment in subject
+#  10.	 send	 end of alignment in subject
+#  11.	 evalue	 expect value
+#  12.	 bitscore	 bit score
+
+my $outputfile = "./highabund_doublehits.out";
+
+unless (open(OUTFILE, ">$outputfile"))  {
+	print "I can\'t write to $outputfile  $!\n\n";
+	exit;
+}
+print "Creating output file: $outputfile\n";
+
+# open blast results
+
+open (DATA, "./AO248_highabundancekmercontigs_to_AO248_highabundancekmercontigs") or die "Failed to open laevis Blast results";
+
+my $genez=0;
+
+my @temp;
+my @multimatch;
+
+while ( my $line = <DATA>) {
+	@temp = split("\t",$line);
+	if($temp[0] ne $temp[1]){
+		# this is a match to another 
+		push (@multimatch, $temp[0]);
+	}
+	else{
+		$genez+=1;
+	}
+}
+my $x_uniq = uniq @multimatch;
+
+print "The number of contigs that matched at least one other is ",$x_uniq,"\n";
+print "The number of genes is ",$genez,"\n";
+print "The proportion is ",$x_uniq/$genez,"\n";
+```
+
 
 # Parsing the velvet assembly
 I'm in this directory: `/net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO245_kmer_51/velvet_repeat_lib`
