@@ -148,6 +148,10 @@ and here is the blast command (note i do not specify the evalue, so this is 10 b
 /usr/local/blast/2.3.0/bin/blastn -query /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO248_WGS/AO248_newtrim_kmer_31/velvet_repeat_lib/contigs.fa -db /home/ben/2014_Tympanoctomys_transcriptomes/Octomys/Octomys_joint_trinity_assembly_with_concatenated_reads/trinity_out_dir/Octomys_all_transcriptomes_assembled_together_unique.fasta_blastable -outfmt 6 -out Oct_newtrim_highabundance_kmercontigs_versus_uniqueOcttranscriptome.out
 ```
 
+and here is the blast command for the high abundance kmer contigs from tympa to the unique tympa transcriptome:
+```
+/usr/local/blast/2.3.0/bin/blastn -query /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO245_WGS/AO245_newtrim_kmer_31/velvet_repeat_lib/contigs.fa -db /home/ben/2014_Tympanoctomys_transcriptomes/Tympano/Tympano_joint_trinity_assembly_with_concatenated_reads/trinity_out_dir/Tympa_all_transcriptomes_assembled_together_unique.fasta_blastable -outfmt 6 -out Tymp_newtrim_highabundance_kmercontigs_versus_uniqueTymptranscriptome.out
+```
 
 # Examining the incidence of repetitive elements in the RNAseq Assembly
 
