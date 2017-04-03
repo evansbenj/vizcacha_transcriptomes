@@ -128,7 +128,20 @@ and to blast the repeats from Octomys against the Octomys and tympa transcriptom
 I made a new db out of the unique transcriptome seqs
 ```
 /usr/local/blast/2.3.0/bin/makeblastdb -in Octomys_all_transcriptomes_assembled_together_unique.fasta -dbtype nucl -out Octomys_all_transcriptomes_assembled_together_unique.fasta_blastable
+
+
 ```
+and in this directory:
+```
+/home/ben/2014_Tympanoctomys_transcriptomes/Tympano/Tympano_joint_trinity_assembly_with_concatenated_reads/trinity_out_dir
+```
+I made a new blast db out of unique reads like this:
+
+```
+/usr/local/blast/2.3.0/bin/makeblastdb -in Tympa_all_transcriptomes_assembled_together_unique.fasta -dbtype nucl -out Tympa_all_transcriptomes_assembled_together_unique.fasta_blastable
+
+```
+
 and here is the blast command (note i do not specify the evalue, so this is 10 by default) from within this directory:
 `/net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO248_WGS/AO248_newtrim_kmer_31`
 ```
