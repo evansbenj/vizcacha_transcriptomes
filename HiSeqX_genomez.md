@@ -187,6 +187,13 @@ mv AO248_R1_newtrim_paired.cor.fastq.gz AO248_R1_newtrim_paired.cor_1.fq.gz
 mv AO248_R2_newtrim_paired.cor.fastq.gz AO248_R2_newtrim_paired.cor_2.fq.gz
 ```
 
+# Reset path for tmp directory
+Abyss crashed due to not enough disk space on /tmp. So reset the TMPDIR variable like this before executing the command. Hopefully this works!
+
+```
+export TMPDIR=/scratch/ben/AO245_new_quaked_data
+```
+
 Here is the commandline for oct:
 ```
 abyss-pe np=24 name=AO248 lib='pea' k=64 pea='AO248_R1_newtrim_paired.cor_1.fq.gz AO248_R2_newtrim_paired.cor_2.fq.gz' se='AO248_R1_newtrim_paired.cor_single.fastq.gz AO248_R2_newtrim_paired.cor_single.fastq.gz AO248_R1_newtrim_single.cor.fastq.gz AO248_R2_newtrim_single.cor.fastq.gz'
