@@ -2,7 +2,7 @@
 
 For genome assemblies, NSBI only will take assembled bits that are greater than 200bp.
 
-I got this script off of the internet (removessmall.pl). I think the command line is something like ./removessmall.pl 200 fasta.in > fasta_filtered.out
+I got this script off of the internet (removessmall.pl). I think the command line is something like perl ./removessmall.pl 200 fasta.in > fasta_filtered.out
 
 ```perl
 ## removesmalls.pl
