@@ -4,15 +4,32 @@ Prepare genomes for mapping using bwa, samtools and piccard as previously.  To m
 ```
 /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO248_WGS/abyss_genome_assembly
 ```
+
+prepare the genomez
 ```
-/usr/local/bin/bwa index AO248_newtrim_scaffolds.fa
-/usr/local/bin/bwa mem -M -t 16 AO248_newtrim_scaffolds.fa ../AO248_R1_newtrim_paired.cor.fastq.gz ../AO248_R2_newtrim_paired.fastq.gz > octomys_WGS_to_newgenome_aln.sam | \
-~/samtools_2016/bin/samtools view -Shu - | \
-~/samtools_2016/bin/samtools sort - - | \
-~/samtools_2016/bin/samtools rmdup -s - - | \
+/usr/local/bin/bwa index -a bwtsw AO248_newtrim_scaffolds.fa
+/usr/local/bin/samtools faidx AO248_newtrim_scaffolds.fa
+java -jar ~/picard-tools-1.131/picard.jar CreateSequenceDictionary REFERENCE=AO248_newtrim_scaffolds.fa OUTPUT=AO248_newtrim_scaffolds.dict
+```
+
+```
+/usr/local/bin/bwa index -a bwtsw AO245_newtrim_scaffolds.fa
+/usr/local/bin/samtools faidx AO245_newtrim_scaffolds.fa
+java -jar ~/picard-tools-1.131/picard.jar CreateSequenceDictionary REFERENCE=AO245_newtrim_scaffolds.fa OUTPUT=AO245_newtrim_scaffolds.dict
+```
+
+mapping reads
+
+```
+/usr/local/bin/bwa mem -M -t 16 AO248_newtrim_scaffolds.f ../AO248_R1_newtrim_paired.cor.fastq.gz ../AO248_R2_newtrim_paired.fastq.gz > octomys_WGS_to_newgenome_aln.sam
+```
 
 
 ```
+/usr/local/bin/bwa mem -M -t 16 AO245_newtrim_scaffolds.f ../AO245_R1_newtrim_paired.cor.fastq.gz ../AO245_R2_newtrim_paired.fastq.gz > tympa_WGS_to_newgenome_aln.sam
+```
+
+
 
 and later bits for tympa:
 
