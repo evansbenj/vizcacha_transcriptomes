@@ -9,13 +9,13 @@ prepare the genomez
 ```
 /usr/local/bin/bwa index -a bwtsw AO248_newtrim_scaffolds.fa
 /usr/local/bin/samtools faidx AO248_newtrim_scaffolds.fa
-java -jar ~/picard-tools-1.131/picard.jar CreateSequenceDictionary REFERENCE=AO248_newtrim_scaffolds.fa OUTPUT=AO248_newtrim_scaffolds.dict
+~/jre1.8.0_111/bin/java -Xmx2g -jar ~/picard-tools-1.131/picard.jar CreateSequenceDictionary REFERENCE=AO248_newtrim_scaffolds.fa OUTPUT=AO248_newtrim_scaffolds.dict
 ```
 
 ```
 /usr/local/bin/bwa index -a bwtsw AO245_newtrim_scaffolds.fa
 /usr/local/bin/samtools faidx AO245_newtrim_scaffolds.fa
-java -jar ~/picard-tools-1.131/picard.jar CreateSequenceDictionary REFERENCE=AO245_newtrim_scaffolds.fa OUTPUT=AO245_newtrim_scaffolds.dict
+~/jre1.8.0_111/bin/java -Xmx2g -jar ~/picard-tools-1.131/picard.jar CreateSequenceDictionary REFERENCE=AO245_newtrim_scaffolds.fa OUTPUT=AO245_newtrim_scaffolds.dict
 ```
 
 mapping reads
