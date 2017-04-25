@@ -29,6 +29,14 @@ mapping reads
 /usr/local/bin/bwa mem -M -t 16 AO245_newtrim_scaffolds.fa ../AO245_R1_newtrim_paired.cor.fastq.gz ../AO245_R2_newtrim_paired.fastq.gz > tympa_WGS_to_newgenome_aln.sam
 ```
 
+This caused problems with the octomys file due to differently named paired end reads.  I suspect this is related to quake.  I corrected these reads like this:
+
+```
+../../bbmap/bbmap/repair.sh in1=../AO248_R1_newtrim_paired.cor.fastq.gz in2=../AO248_R2_newtrim_paired.cor.fastq.gz out1=fixed1.fq out2=fixed2.fq outsingle=single.fq
+```
+and then re-ran the ampping using the `fixed1.fq` and `fixed2.fq` files.
+
+
 make bam files
 
 ```
