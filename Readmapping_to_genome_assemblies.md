@@ -34,7 +34,7 @@ This caused problems with the octomys file due to differently named paired end r
 ```
 ../../bbmap/bbmap/repair.sh in1=../AO248_R1_newtrim_paired.cor.fastq.gz in2=../AO248_R2_newtrim_paired.cor.fastq.gz out1=fixed1.fq out2=fixed2.fq outsingle=single.fq
 ```
-and then re-ran the ampping using the `fixed1.fq` and `fixed2.fq` files.
+and then re-ran the ampping using the `fixed1.fq` and `fixed2.fq` files. This worked even though none of the paired reads did not have a mate.
 
 
 make bam files
