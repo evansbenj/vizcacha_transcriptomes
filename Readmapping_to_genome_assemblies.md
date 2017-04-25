@@ -21,28 +21,66 @@ java -jar ~/picard-tools-1.131/picard.jar CreateSequenceDictionary REFERENCE=AO2
 mapping reads
 
 ```
-/usr/local/bin/bwa mem -M -t 16 AO248_newtrim_scaffolds.f ../AO248_R1_newtrim_paired.cor.fastq.gz ../AO248_R2_newtrim_paired.fastq.gz > octomys_WGS_to_newgenome_aln.sam
+/usr/local/bin/bwa mem -M -t 16 AO248_newtrim_scaffolds.fa ../AO248_R1_newtrim_paired.cor.fastq.gz ../AO248_R2_newtrim_paired.fastq.gz > octomys_WGS_to_newgenome_aln.sam
 ```
 
 
 ```
-/usr/local/bin/bwa mem -M -t 16 AO245_newtrim_scaffolds.f ../AO245_R1_newtrim_paired.cor.fastq.gz ../AO245_R2_newtrim_paired.fastq.gz > tympa_WGS_to_newgenome_aln.sam
+/usr/local/bin/bwa mem -M -t 16 AO245_newtrim_scaffolds.fa ../AO245_R1_newtrim_paired.cor.fastq.gz ../AO245_R2_newtrim_paired.fastq.gz > tympa_WGS_to_newgenome_aln.sam
 ```
 
+make bam files
 
+```
+/usr/local/bin/samtools view -bt AO248_newtrim_scaffolds.fa -o octomys_WGS_to_newgenome_aln.bam octomys_WGS_to_newgenome_aln.sam
+```
 
-and later bits for tympa:
+```
+/usr/local/bin/samtools view -bt AO248_newtrim_scaffolds.fa -o tympa_WGS_to_newgenome_aln.bam tympa_WGS_to_newgenome_aln.sam
+```
+
+delete sam files
+
+```
+rm -f octomys_WGS_to_newgenome_aln.sam
+```
+```
+rm -f tympa_WGS_to_newgenome_aln.sam
+```
+
+sort bam files
+```
+/usr/local/bin/samtools sort octomys_WGS_to_newgenome_aln.bam octomys_WGS_to_newgenome_aln_sorted
+```
+```
+/usr/local/bin/samtools sort tympa_WGS_to_newgenome_aln.bam tympa_WGS_to_newgenome_aln_sorted
+```
+
+add readgroups:
 
 ```
 java -jar ~/picard-tools-1.131/picard.jar AddOrReplaceReadGroups \
-      I=tymp_WGS_to_newgenome_aln_sorted.bam \
-      O=tymp_WGS_to_newgenome_aln_sorted_rg.bam \
+      I=octomys_WGS_to_newgenome_aln_sorted.bam \
+      O=octomys_WGS_to_newgenome_aln_sorted_rg.bam \
+      RGID=octWGS \
+      RGLB=octWGS \
+      RGPL=illumina \
+      RGPU=octWGS \
+      RGSM=octWGS
+```
+
+```
+java -jar ~/picard-tools-1.131/picard.jar AddOrReplaceReadGroups \
+      I=tympa_WGS_to_newgenome_aln_sorted.bam \
+      O=tympa_WGS_to_newgenome_aln_sorted_rg.bam \
       RGID=tympaWGS \
       RGLB=tympaWGS \
       RGPL=illumina \
       RGPU=tympaWGS \
       RGSM=tympaWGS
+```
 
+```
 
 /usr/local/bin/samtools index tymp_WGS_to_newgenome_aln_sorted_rg.bam
 
