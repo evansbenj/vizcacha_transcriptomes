@@ -80,6 +80,34 @@ java -jar ~/picard-tools-1.131/picard.jar AddOrReplaceReadGroups \
       RGSM=tympaWGS
 ```
 
+make a bai file
+```
+/usr/local/bin/samtools index octomys_WGS_to_newgenome_aln_sorted_rg.bam
+```
+```
+/usr/local/bin/samtools index tympa_WGS_to_newgenome_aln_sorted_rg.bam
+```
+Mark duplicates
+
+```
+java -Xmx5G -jar ~/picard-tools-1.131/picard.jar MarkDuplicates MAX_FILE_HANDLES_FOR_READ_ENDS_MAP=1000 INPUT=octomys_WGS_to_newgenome_aln_sorted_rg.bam OUTPUT=octomys_WGS_to_newgenome_aln_sorted_rg_dedup.bam METRICS_FILE=octomys_WGS_to_newgenome_aln_sorted_rg_dedup_metrics.txt
+```
+```
+java -Xmx5G -jar ~/picard-tools-1.131/picard.jar MarkDuplicates MAX_FILE_HANDLES_FOR_READ_ENDS_MAP=1000 INPUT=tympa_WGS_to_newgenome_aln_sorted_rg.bam OUTPUT=tympa_WGS_to_newgenome_aln_sorted_rg_dedup.bam METRICS_FILE=tympa_WGS_to_newgenome_aln_sorted_rg_dedup_metrics.txt
+```
+
+Use samtools and bcftools to call genotypes and filter
+
+
+```
+~/samtools_2016/bin/samtools mpileup -d8000 -ugf AO245_newtrim_scaffolds.fa -t DP,AD octomys_WGS_to_newgenome_aln_sorted_rg_dedup.bam | ~/samtools_2016/bcftools-1.3.1/bcftools call -V indels --format-fields GQ -m -O z | ~/samtools_2016/bcftools-1.3.1/bcftools filter -e 'FORMAT/GT = "." || FORMAT/DP < 10 || FORMAT/GQ < 20 || FORMAT/GQ = "."' -O z -o oct_WGS_to_newgenome_aln_sorted_rg_dedup.bam.vcf.gz
+```
+
+```
+~/samtools_2016/bin/samtools mpileup -d8000 -ugf AO245_newtrim_scaffolds.fa -t DP,AD tymp_WGS_to_newgenome_aln_sorted_rg_dedup.bam | ~/samtools_2016/bcftools-1.3.1/bcftools call -V indels --format-fields GQ -m -O z | ~/samtools_2016/bcftools-1.3.1/bcftools filter -e 'FORMAT/GT = "." || FORMAT/DP < 10 || FORMAT/GQ < 20 || FORMAT/GQ = "."' -O z -o tymp_WGS_to_newgenome_aln_sorted_rg_dedup.bam.vcf.gz
+```
+
+othetstuff
 ```
 
 /usr/local/bin/samtools index tymp_WGS_to_newgenome_aln_sorted_rg.bam
