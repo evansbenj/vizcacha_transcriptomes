@@ -58,10 +58,10 @@ rm -f tympa_WGS_to_newgenome_aln.sam
 
 sort bam files
 ```
-/usr/local/bin/samtools sort octomys_WGS_to_newgenome_aln.bam octomys_WGS_to_newgenome_aln_sorted
+/usr/local/bin/samtools sort octomys_WGS_to_newgenome_aln.bam -o octomys_WGS_to_newgenome_aln_sorted
 ```
 ```
-/usr/local/bin/samtools sort tympa_WGS_to_newgenome_aln.bam tympa_WGS_to_newgenome_aln_sorted
+/usr/local/bin/samtools sort tympa_WGS_to_newgenome_aln.bam -o tympa_WGS_to_newgenome_aln_sorted
 ```
 
 add readgroups:
