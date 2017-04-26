@@ -105,6 +105,12 @@ java -Xmx5G -jar ~/picard-tools-1.131/picard.jar MarkDuplicates MAX_FILE_HANDLES
 java -Xmx5G -jar ~/picard-tools-1.131/picard.jar MarkDuplicates MAX_FILE_HANDLES_FOR_READ_ENDS_MAP=1000 INPUT=tympa_WGS_to_newgenome_aln_sorted.bam OUTPUT=tympa_WGS_to_newgenome_aln_sorted_dedup.bam METRICS_FILE=tympa_WGS_to_newgenome_aln_sorted_dedup_metrics.txt
 ```
 
+picard is not working because of java issues so I used samtools:
+```
+samtools rmdup octomys_WGS_to_newgenome_aln_sorted.bam octomys_WGS_to_newgenome_aln_sorted_dedup.bam
+```
+
+
 Use samtools and bcftools to call genotypes and filter
 
 
