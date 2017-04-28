@@ -6,3 +6,12 @@
 ```
 /usr/local/blast/2.3.0/bin/makeblastdb -in AO245_newtrim_scaffolds.fa -dbtype nucl -out AO245_newtrim_scaffolds.fa_blastable
 ```
+
+# Blast unique transcripts against genome assemblies
+
+```
+/usr/local/blast/2.3.0/bin/blastn -query /home/ben/2014_Tympanoctomys_transcriptomes/Octomys/Octomys_joint_trinity_assembly_with_concatenated_reads/trinity_out_dir/Octomys_all_transcriptomes_assembled_together_unique.fasta -db /4/ben/2016_Tympa_and_Octomys_WGS/AO248_WGS/abyss_genome_assembly/AO248_newtrim_scaffolds.fa_blastable -outfmt 6 -out /4/ben/2016_Tympa_and_Octomys_WGS/AO248_WGS/abyss_genome_assembly/Oct_RNAseq_blasted_to_Oct_WGS_newtrim_genome_assembly.out
+```
+```
+/usr/local/blast/2.3.0/bin/blastn -query /home/ben/2014_Tympanoctomys_transcriptomes/Tympano/Tympano_joint_trinity_assembly_with_concatenated_reads/trinity_out_dir/Tympa_all_transcriptomes_assembled_together_unique.fasta -db /4/ben/2016_Tympa_and_Octomys_WGS/AO245_WGS/abyss_genome_assembly/AO245_newtrim_scaffolds.fa_blastable -outfmt 6 -out /4/ben/2016_Tympa_and_Octomys_WGS/AO245_WGS/abyss_genome_assembly/Tymp_RNAseq_blasted_to_Tymp_WGS_newtrim_genome_assembly.out
+```
