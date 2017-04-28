@@ -122,7 +122,17 @@ Use samtools and bcftools to call genotypes and filter
 ~/samtools_2016/bin/samtools mpileup -d8000 -ugf AO245_newtrim_scaffolds.fa -t DP,AD tymp_WGS_to_newgenome_aln_sorted_dedup.bam | ~/samtools_2016/bcftools-1.3.1/bcftools call -V indels --format-fields GQ -m -O z | ~/samtools_2016/bcftools-1.3.1/bcftools filter -e 'FORMAT/GT = "." || FORMAT/DP < 10 || FORMAT/GQ < 20 || FORMAT/GQ = "."' -O z -o tymp_WGS_to_newgenome_aln_sorted_dedup.bam.vcf.gz
 ```
 
-othetstuff
+# Coverage
+
+```
+samtools depth  oct_WGS_to_newgenome_aln_sorted_dedup.bam  |  awk '{sum+=$3} END { print "Average = ",sum/NR}'
+
+```
+```
+samtools depth  tymp_WGS_to_newgenome_aln_sorted_dedup.bam  |  awk '{sum+=$3} END { print "Average = ",sum/NR}'
+```
+
+otherstuff
 ```
 
 /usr/local/bin/samtools index tymp_WGS_to_newgenome_aln_sorted_rg.bam
