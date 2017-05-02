@@ -22,3 +22,12 @@
 ~/tabix-0.2.6/tabix -p vcf XXXf.vcf.gz
 zcat XXX.vcf.gz | /usr/local/vcftools/src/perl/vcf-to-tab > XXX.vcf.gz.tab
 ```
+
+# Blast high abundance kmer contigs against genome assemblies
+
+```
+/usr/local/blast/2.3.0/bin/blastn -query /4/ben/2016_Tympa_and_Octomys_WGS/AO248_WGS/repArc_AO248_kmer_29/velvet_repeat_lib -db /4/ben/2016_Tympa_and_Octomys_WGS/AO248_WGS/abyss_genome_assembly/AO248_newtrim_scaffolds.fa_blastable -outfmt 6 -out /4/ben/2016_Tympa_and_Octomys_WGS/AO248_WGS/abyss_genome_assembly/Oct_highabundancekmercontig_blasted_to_Oct_WGS_newtrim_genome_assembly.out
+```
+```
+/usr/local/blast/2.3.0/bin/blastn -query XXX -db /4/ben/2016_Tympa_and_Octomys_WGS/AO245_WGS/abyss_genome_assembly/AO245_newtrim_scaffolds.fa_blastable -outfmt 6 -out /4/ben/2016_Tympa_and_Octomys_WGS/AO245_WGS/abyss_genome_assembly/Tymp_highabundancekmercontig_blasted_to_Tymp_WGS_newtrim_genome_assembly.out
+```
