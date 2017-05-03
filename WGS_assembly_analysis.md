@@ -60,4 +60,10 @@ it is located here:
 /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO245_WGS/repArc_kmer_29/velvet_repeat_lib/parses_highabundancecontigs_blasted_to_WGSgenome_assembly.pl
 ```
 
+Results for oct are here:
+
+```
+/net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO248_WGS/abyss_genome_assembly/oct_newtrim_highcontigs_to_oct_newtrim_genome.out
+```
+
 
