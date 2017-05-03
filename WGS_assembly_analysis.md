@@ -70,6 +70,14 @@ Results for tymp are here:
 ```
 /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO245_WGS/abyss_genome_assembly/tymp_newtrim_highcontigs_to_tymp_newtrim_genome.out
 ```
-
+According to this link: https://edwards.sdsu.edu/research/perl-one-liner-to-extract-sequences-by-their-identifer-from-a-fasta-file/
 Get fasta entries like this:
+```
+perl -ne 'if(/^>(\S+)/){$c=grep{/^$1$/}qw(42732422)}print if $c' /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO245_WGS/abyss_genome_assembly/AO245_newtrim_scaffolds.fa
+```
+or with a file:
+```
+perl -ne 'if(/^>(\S+)/){$c=$i{$1}}$c?print:chomp;$i{$_}=1 if @ARGV' ids.file fasta.file
+```
+
 awk -v seq="42732422 10004 289064 42567259-,...,42597465-" -v RS='>' '$1 == seq {print RS $0}' /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO245_WGS/abyss_genome_assembly/AO245_newtrim_scaffolds.fa
