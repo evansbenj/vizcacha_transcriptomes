@@ -66,4 +66,9 @@ Results for oct are here:
 /net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO248_WGS/abyss_genome_assembly/oct_newtrim_highcontigs_to_oct_newtrim_genome.out
 ```
 
+Results for tymp are here:
+```
+/net/infofile4-inside/volume1/scratch/ben/2016_Tympa_and_Octomys_WGS/AO245_WGS/abyss_genome_assembly/tymp_newtrim_highcontigs_to_tymp_newtrim_genome.out
+```
+
 
