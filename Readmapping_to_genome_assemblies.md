@@ -144,12 +144,18 @@ java -Xmx5G -jar ~/picard-tools-1.131/picard.jar MarkDuplicates MAX_FILE_HANDLES
 
 # Genotyping
 ```
-samtools mpileup -d8000 -ugf ../xenXL_MT.fasta -t DP,AD BMNH1947_2_24_78_stampy_to_XLmtDNA_sorted.bam | bcftools call -V indels --format-fields GQ -m -g 1 -O z -o BMNH1947_2_24_78_stampy_to_XLmtDNA.bam.gvcf.gz
+samtools mpileup -d8000 -ugf ../xenXL_MT.fasta -t DP,AD BMNH1947_2_24_78_stampy_to_XLmtDNA_sorted.bam | bcftools call -V indels --format-fields GQ -m -g 1 -O z -o BMNH1947_2_24_78_stampy_to_XLmtDNA.bam.g.vcf.gz
 ```
 ```
-samtools mpileup -d8000 -ugf ../xenXL_MT.fasta -t DP,AD BMNH1947_2_24_79_stampy_to_XLmtDNA_sorted.bam | bcftools call -V indels --format-fields GQ -m -g 1 -O z -o BMNH1947_2_24_79_stampy_to_XLmtDNA.bam.gvcf.gz
+samtools mpileup -d8000 -ugf ../xenXL_MT.fasta -t DP,AD BMNH1947_2_24_79_stampy_to_XLmtDNA_sorted.bam | bcftools call -V indels --format-fields GQ -m -g 1 -O z -o BMNH1947_2_24_79_stampy_to_XLmtDNA.bam.g.vcf.gz
 ```
 ```
-samtools mpileup -d8000 -ugf ../xenXL_MT.fasta -t DP,AD 16294_stampy_to_XLmtDNA_sorted.bam | bcftools call -V indels --format-fields GQ -m -g 1 -O z -o 16294_stampy_to_XLmtDNA.bam.gvcf.gz
+samtools mpileup -d8000 -ugf ../xenXL_MT.fasta -t DP,AD 16294_stampy_to_XLmtDNA_sorted.bam | bcftools call -V indels --format-fields GQ -m -g 1 -O z -o 16294_stampy_to_XLmtDNA.bam.g.vcf.gz
+```
+```
+tabix -p vcf myvcf.vcf.gz
+```
+```
+java -Xmx8G -cp /mnt/expressions/ben_evans/bin/GenomeAnalysisTK-nightly-2017-10-07-g1994025/GenomeAnalysisTK.jar org.broadinstitute.gatk.tools.CatVariants -R ../xenXL_MT.fasta -V BMNH1947_2_24_78_stampy_to_XLmtDNA.bam.g.vcf.gz -V BMNH1947_2_24_79_stampy_to_XLmtDNA.bam.g.vcf.gz -V 16294_stampy_to_XLmtDNA.bam.g.vcf.gz -out ancientfrogz.g.vcf.gz -assumeSorted
 ```
 
