@@ -158,4 +158,18 @@ tabix -p vcf myvcf.vcf.gz
 ```
 java -Xmx8G -cp /mnt/expressions/ben_evans/bin/GenomeAnalysisTK-nightly-2017-10-07-g1994025/GenomeAnalysisTK.jar org.broadinstitute.gatk.tools.CatVariants -R ../xenXL_MT.fasta -V BMNH1947_2_24_78_stampy_to_XLmtDNA.bam.g.vcf.gz -V BMNH1947_2_24_79_stampy_to_XLmtDNA.bam.g.vcf.gz -V 16294_stampy_to_XLmtDNA.bam.g.vcf.gz -out ancientfrogz.g.vcf.gz -assumeSorted
 ```
+extract allele depth column:
+```
+vcftools --gzvcf Merged.vcf.gz --extract-FORMAT-info AD
+```
+to get only the transcripts that are sex-biased:
+```
+grep -f SL_trans_IDs_sig_Sex_biased Merged.vcf.gz_out.AD.FORMAT > SL_allelic_depth_sig_sex_biased.AD.FORMAT
+```
+where `SL_trans_IDs_sig_Sex_biased` is from 
+```
+XB_adult_liver_SL_transcripts_sig_Sex_biased <- borTad_laevisGenome_deseq2_tmm_combine_st46_chr8L %>% filter((start< 54000000)&((logFC< -2)|(logFC> 2))&(padj<0.01))
+library(data.table) # install if not installed already
+fwrite(list(XB_adult_liver_SL_transcripts$trans_id), file = "SL_trans_IDs")
+```
 
